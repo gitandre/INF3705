@@ -16,7 +16,11 @@
 10. Chapter 10: Dependable systems
 11. Chapter 11: Reliability engineering
 12. Chapter 12: Safety engineering
-13. Chapter 15: Software reuse
+13. Chapter 13 : n/a
+14. Chapter 14 : n/a
+15. Chapter 15: Software reuse
+16. Chapter 16 : n/a
+17. Chapter 17 : n/a
 14. Chapter 18: Service-oriented software engineering
 15. Chapter 19: Systems engineering
 
