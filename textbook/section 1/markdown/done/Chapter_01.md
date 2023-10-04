@@ -5,9 +5,9 @@
 
 ---
 
-### 1.1 Professional software development
+### 1.1 Professional software development  
 
-#### 1.1.1 Software Engineering
+#### 1.1.1 Software Engineering:  
 
 1. **Scope**: Software engineering covers all aspects of software production, from system specification to maintenance.
 
@@ -37,9 +37,9 @@
 
 These points encapsulate the multi-faceted and evolving nature of software engineering as a discipline.
 
-![img.png](img.png)
+![img.png](../wip/img.png)
 
-#### 1.1.2 Software Engineering Diversity
+#### 1.1.2 Software Engineering Diversity:  
 
 There are many different types of application:
 1. **Stand-alone Applications**: Software that runs independently on a PC or mobile device, requiring no network connectivity. Examples include office apps and CAD programs.
@@ -77,7 +77,7 @@ The following should be considered...
 8. **Language Independence**: These fundamentals apply regardless of the programming language used.
 
 
-#### 1.1.3 Internet Software Engineering
+#### 1.1.3 Internet Software Engineering:  
 
 1. **Initial Web Development**: Initially, the web was mainly an information store with little impact on software systems that operated locally within organizations.
 
@@ -105,7 +105,7 @@ The following should be considered...
 
 These key points provide a comprehensive overview of the major changes and trends in Internet software engineering.
 
-### 1.2 Software Engineering Ethics: Key Points
+### 1.2 Software Engineering Ethics: Key Points:  
 
 1. **Social and Legal Framework**: Software engineering is conducted within societal and legal norms that restrict practitioners' freedom.
   
@@ -139,7 +139,7 @@ These key points provide a comprehensive overview of the major changes and trend
 
 This summary captures the essence of the extensive section on ethics in software engineering.
 
-### 1.3 Case studies
+### 1.3 Case studies:  
 
 1. **Embedded System**: Software controls a hardware device, embedded within it. Challenges include size, responsiveness, and power management. Example: Insulin pump control system for diabetes patients.
   
@@ -150,7 +150,7 @@ This summary captures the essence of the extensive section on ethics in software
 4. **Support Environment**: An integrated set of software tools used to assist a specific activity. Example: Digital learning environment for students in schools.
 
 
-### Summary
+### Summary:  
 
 - Software engineering is an engineering discipline that is concerned with all aspects of software production.  
 
@@ -169,4 +169,5 @@ This summary captures the essence of the extensive section on ethics in software
 - Professional societies publish codes of conduct that embed ethical and professional standards.  
 
 - These set out the standards of behavior expected of their members.  
+
 ---
