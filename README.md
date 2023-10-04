@@ -42,7 +42,6 @@ This repository is shared in the spirit of 'paying it forward.' While the resour
 5. Chapter 5: System modelling
 6. Chapter 6: Architecture design
 7. Chapter 7: Design and implementation
-8. '------------------------------------'
 8. Chapter 8: Software testing
 9. Chapter 9: Software evolution
 10. Chapter 10: Dependable systems
