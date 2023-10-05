@@ -371,9 +371,77 @@ Event-driven modeling is a technique primarily used for real-time systems to sho
 
 ![img_40.png](img_40.png)
 
-### 5.5 Model-driven architecture
+#### 5.4.3 model-driven Engineering (MDE)
+
+1. **Definition and Approach**: 
+    - Model-driven engineering is a software development method where the primary outputs are models, not programs. 
+    - Software to run on hardware is automatically generated from these models.
+    - The approach aims to abstract away the complexities of programming languages and execution platforms.
+
+2. **Origins**: 
+    - MDE evolved from the concept of Model-Driven Architecture (MDA), which was proposed by the Object Management Group (OMG).
+    - MDA focuses only on the design and implementation stages of software development.
+
+3. **Scope**:
+    - Unlike MDA, MDE is concerned with the entire software engineering process. 
+    - This includes model-based requirements engineering, model-based development processes, and model-based testing.
+
+4. **Adoption in Industry**: 
+    - MDA has been adopted by several large companies for their development processes.
+    - However, the broader approach of MDE has not been widely adopted across the software development life cycle.
+
+5. **Challenges**: 
+    - The slow adoption of MDE is a subject of discussion, with some questioning the reasons for its limited uptake in the industry.
+
+By focusing on models rather than code, MDE aims to elevate the level of abstraction in software engineering, thereby simplifying the development process. However, its adoption has been slow compared to its predecessor, MDA.
 
 
+### 5.5 Model-driven architecture (MDA)
+
+1. **Definition and Methodology**: 
+    - MDA is a model-centric approach to software design and implementation.
+    - Uses a subset of UML models at varying levels of abstraction to describe a system.
+    - In theory, it can produce working programs automatically from high-level models.
+
+2. **Types of Models**: 
+    - Computation Independent Model (CIM): Focuses on domain abstractions. Multiple CIMs may exist for different system views.
+    - Platform Independent Model (PIM): Describes the system operations without considering implementation specifics.
+    - Platform Specific Model (PSM): Transforms PIMs to suit specific platforms. May exist in layers for different platform specifics.
+
+3. **Advantages**: 
+    - High-level abstraction reduces errors and speeds up design and implementation.
+    - Facilitates the generation of platform-independent application models.
+    - Allows for easy adaptation to new platform technologies via model translators.
+
+4. **Challenges and Limitations**: 
+    - Fully automated translation from models to code is often not feasible.
+    - High-level models may not always be suitable for implementation.
+    - Requires human intervention for concept mapping between different CIMs.
+    - Off-the-shelf tool support may be limited, requiring custom tool development.
+
+5. **Industry Adoption and Criticism**: 
+    - MDA has been slow to become mainstream for several reasons:
+        1. Limited applicability in addressing major issues like requirements engineering and security.
+        2. Gains from using MDA are often offset by costs of tooling and introduction.
+        3. Divergence from agile methodologies, which focus less on up-front modeling.
+    - Success stories are mostly from companies with systems products that have long lifetimes and well-understood domains.
+
+6. **Productivity and Reusability**: 
+    - MDA has shown to increase productivity and reduce maintenance costs in some cases.
+    - Particularly useful in facilitating reuse, leading to significant productivity improvements.
+
+7. **Agile Methods and MDA**: 
+    - There is tension between agile methods and MDA due to differing philosophies.
+    - Some suggest that elements of MDA can be incorporated into agile processes, but with reservations about automated code generation.
+
+MDA focuses on creating models to abstract away the complexities of system design and implementation. While promising in theory, the approach has several practical limitations and has seen mixed results in terms of industry adoption.
+
+
+![img_43.png](img_43.png)
+
+![img_42.png](img_42.png)
+
+![img_41.png](img_41.png)
 
 ---
 
