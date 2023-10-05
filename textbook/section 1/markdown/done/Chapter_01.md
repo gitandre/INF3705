@@ -37,7 +37,7 @@
 
 These points encapsulate the multi-faceted and evolving nature of software engineering as a discipline.
 
-![img.png](../wip/img.png)
+![img.png](img.png)
 
 #### 1.1.2 Software Engineering Diversity:  
 
