@@ -135,16 +135,242 @@ Examples include:
 
 ![img_16.png](img_16.png)
 
-
 ### 4.2 Requirements engineering processes
 
+#### Core Activities in Requirements Engineering (RE)
+1. **Elicitation and Analysis**: Discovering requirements by interacting with stakeholders.
+2. **Specification**: Converting discovered requirements into a standard form.
+3. **Validation**: Ensuring the requirements define the system that the customer wants.
 
+#### Iterative Nature of RE
+- RE is an iterative process where activities are interleaved.
+- The output is a system requirements document.
+
+#### Effort Allocation in the Spiral Model
+- Early stages focus on high-level business and non-functional requirements.
+- Later stages focus on detailed non-functional and system requirements.
+
+#### Flexibility in the Spiral Model
+- The number of iterations can vary.
+- Agile development can be used to develop requirements and implementation concurrently.
+
+#### Requirements Change Management
+- Requirements often change due to better understanding, organizational shifts, or system modifications.
+- Changes must be managed to understand their impact on other requirements and the overall system.
+
+![img_17.png](img_17.png)
 
 ### 4.3 Requirements Elicitation
 
+#### Aims of Requirements Elicitation
+- To understand stakeholders' work and how a new system could support it.
+- To gather information on the application domain, services, features, performance, hardware constraints, etc.
 
+#### Challenges in Requirements Elicitation
+1. **Unclear Expectations**: Stakeholders often have general or unrealistic expectations.
+2. **Domain-Specific Language**: Stakeholders may express requirements in terms specific to their domain, which engineers might not understand.
+3. **Diverse Stakeholders**: Different stakeholders may express conflicting requirements.
+4. **Political Factors**: Internal politics may influence system requirements.
+5. **Dynamic Environment**: Economic and business conditions may change, affecting requirements priorities.
+
+#### Process Activities
+1. **Requirements Discovery and Understanding**: Interact with stakeholders to discover their requirements.
+2. **Requirements Classification and Organization**: Group and organize the unstructured collection of requirements.
+3. **Requirements Prioritization and Negotiation**: Resolve conflicting requirements through prioritization and negotiation.
+4. **Requirements Documentation**: Document the requirements for the next iteration or for the final requirements document.
+
+#### Iterative Nature of the Process
+- Elicitation and analysis is an iterative process with continual feedback.
+- The process cycle starts with discovery and ends with documentation.
+
+#### Stakeholder Engagement
+- Regular stakeholder meetings are crucial for resolving conflicts and achieving compromises.
+  
+#### Requirements Documentation
+- Use simple language and diagrams.
+- Use shared documents or wikis for better stakeholder engagement.
+
+#### 4.3.1 Requirements Elicitation Techniques
+
+#### Fundamental Approaches to Requirements Elicitation
+1. **Interviewing**: Talking to people about what they do.
+2. **Observation or Ethnography**: Watching people do their job to understand their tasks and tools.
+
+#### Interviewing
+- **Types of Interviews**:
+  1. **Closed Interviews**: Predefined set of questions for stakeholders.
+  2. **Open Interviews**: No predefined agenda, more exploratory.
+- **Challenges in Interviewing**:
+  1. **Domain Jargon**: Stakeholders use domain-specific terminology that may be misunderstood.
+  2. **Implicit Knowledge**: Stakeholders may omit mentioning basic domain knowledge, assuming it's understood.
+- **Effectiveness**:
+  - Good for general understanding but not for specific, detailed requirements.
+  - Not effective for organizational constraints due to subtle power dynamics.
+- **Best Practices**:
+  1. Be open-minded and willing to listen.
+  2. Use springboard questions or prototypes to prompt discussions.
+
+#### Ethnography
+- **Importance**: Helps understand social and organizational factors that impact practical system operation.
+- **Benefits**:
+  1. Discovers implicit system requirements.
+  2. Observes actual tasks and work relationships.
+- **Types of Requirements Derived**:
+  1. Requirements based on how people actually work.
+  2. Requirements based on cooperation and awareness among workers.
+- **Limitations**:
+  - Not effective for broader organizational or domain requirements.
+  - May not aid in innovation.
+  
+#### Combining Techniques
+- Information from interviews is often combined with ethnography and other sources.
+- Both interviewing and ethnography have limitations and should be used in conjunction with other techniques.
+
+
+![img_18.png](img_18.png)
+
+#### 4.3.2 Stories and Scenarios
+
+#### Stories and Scenarios: An Introduction
+- Both stories and scenarios capture real-life examples to describe how a system can be used for specific tasks.
+- Stories provide high-level, narrative text descriptions for system use.
+- Scenarios are structured and provide specific details like inputs and outputs.
+
+#### Differences Between Stories and Scenarios
+1. **Structure**: Stories are less structured than scenarios.
+2. **Detail Level**: Stories provide a high-level overview, while scenarios delve into specifics.
+3. **Purpose**: Stories are effective for setting out the "big picture," whereas scenarios are used for more specific user interactions.
+
+#### Advantages of Using Stories
+- Easily relatable and understood by stakeholders.
+- Facilitates discussion and acts as a starting point for eliciting requirements.
+- Useful for gathering information from a broader community by sharing them on platforms like wikis.
+
+#### Developing Scenarios from Stories
+- High-level stories can be broken down into more specific scenarios.
+- Scenarios provide detailed descriptions of user interaction sessions.
+  
+#### Components of a Scenario
+1. **Initial Expectations**: What the system and users expect when the scenario starts.
+2. **Normal Flow of Events**: The usual sequence of actions in the scenario.
+3. **Exception Handling**: What can go wrong and how the resulting problems are handled.
+4. **Concurrent Activities**: Other activities that might be happening simultaneously.
+5. **Ending State**: The system state when the scenario concludes.
+
+#### Use in Agile Methods
+- In agile methods like Extreme Programming, "user stories" are more like narrative scenarios designed to help elicit requirements.
+
+#### Facilitation with Stakeholders
+- Both stories and scenarios can be used to engage stakeholders in discussions, especially when there are different ways to achieve the same result.
+
+By using stories and scenarios, you can capture both the high-level view and the detailed requirements, thereby providing a comprehensive understanding of what the system is expected to do.
 
 ### 4.4 Requirements specification
+
+#### Requirements Specification: An Overview
+- The process involves writing down both user and system requirements.
+- The ideal attributes for these requirements are clarity, unambiguity, easy comprehension, completeness, and consistency.
+- In reality, these attributes are hard to achieve due to different interpretations and inherent conflicts among stakeholders.
+
+#### User Requirements
+1. **Language**: Primarily written in natural language, supported by diagrams and tables.
+2. **Scope**: Should focus on the external behavior of the system, not on how it is designed or implemented.
+3. **Audience**: Intended to be understandable by users without detailed technical knowledge.
+4. **Notation**: Should avoid software jargon and formal notations.
+
+#### System Requirements
+- These are expanded versions of user requirements and serve as the base for system design.
+- Should be complete and detailed specifications of the whole system.
+- While ideally focusing on external behavior and operational constraints, they may include some design details for practical reasons.
+
+#### Reasons for Including Design Details in System Requirements
+1. **Initial Architecture**: Helps to structure the requirements specification. For example, the requirements for the iLearn system were organized based on an initial architecture.
+2. **Interoperability**: New systems often have to work with existing systems, imposing certain design constraints.
+3. **Non-Functional Requirements**: Specific architectures might be necessary to satisfy non-functional requirements like reliability.
+
+By adhering to these guidelines and considerations, the requirements specification will serve as a strong foundation for the subsequent phases of the software development process.
+
+#### 4.4.1 Natural language specification
+
+#### Natural Language Specification: Overview
+- Natural language is expressive, intuitive, but potentially vague and ambiguous.
+- Despite alternatives, it remains the most widely used way of specifying system and software requirements.
+
+#### Guidelines for Writing Requirements in Natural Language
+1. **Standard Format**: Create a standard format and make sure all requirements adhere to it. Ideally, use one or two sentences of natural language for each requirement.
+2. **Consistency in Language**: Distinguish between mandatory ("shall") and desirable ("should") requirements for clarity.
+3. **Text Highlighting**: Use bold, italic, or color to emphasize key parts of the requirement.
+4. **Avoid Technical Jargon**: Do not assume that all readers understand software engineering terms. Avoid jargon, abbreviations, and acronyms.
+5. **Requirement Rationale**: Include a rationale for each user requirement, specifying why it was included and who proposed it. This helps in future consultation or changes.
+
+By adhering to these guidelines, you can make the natural language specifications clearer, more consistent, and easier to understand. This can be particularly helpful in minimizing misunderstandings among stakeholders.
+
+#### 4.4.2 Structured specifications
+
+#### Structured Specifications: Overview
+- Structured natural language aims for uniformity while retaining the expressiveness and understandability of natural language.
+- Standard templates or structured forms are used to specify requirements.
+  
+#### Features of Structured Specifications
+- May use programming constructs for alternatives and iteration.
+- Key elements can be highlighted using shading or different fonts.
+  
+#### Card-Based Approach (VOLERE)
+- User requirements are initially written on cards, one per card.
+- Fields on the card may include rationale, dependencies, source, and supporting materials.
+  
+#### Structured Specification Components
+1. **Function/Entity Description**: Briefly describes the function or entity being specified.
+2. **Inputs**: Describes the inputs and their origins.
+3. **Outputs**: Describes the outputs and their destinations.
+4. **Requirements**: Information about other entities required for computation.
+5. **Action Description**: Description of the action to be taken.
+6. **Preconditions and Postconditions**: Conditions before and after the function is called.
+7. **Side Effects**: Description of any side effects of the operation.
+
+#### Advantages and Challenges
+- Addresses some problems of natural language by reducing variability and improving organization.
+- Still can be difficult to specify complex computations clearly.
+
+#### Extending Natural Language Specifications
+- Tables or graphical models can be used to add extra information.
+- Especially useful for alternative situations or complex computations (e.g., calculating insulin doses based on rate of blood sugar change).
+
+By utilizing structured specifications, you can balance the natural language's flexibility with the precision needed for complex requirements, providing a more consistent and organized approach.
+
+![img_19.png](img_19.png)
+
+![img_20.png](img_20.png)
+
+#### 4.4.3 Use cases
+
+#### Use Cases: Overview
+- Use cases describe interactions between users and a system via graphical models and structured text.
+- They originated from the Objectory method and are now a fundamental part of Unified Modeling Language (UML).
+
+#### Components of Use Cases
+1. **Actors**: Represented as stick figures, these can be human users or other systems.
+2. **Type of Interaction**: Represented as a named ellipse, each class of interaction is distinct.
+3. **Linking Lines**: Lines connect actors with the interaction. Optionally, arrowheads may indicate who initiates the interaction.
+
+#### Documentation
+- Use cases are documented using high-level use case diagrams.
+- Each use case should have a textual description that can be further elaborated using other UML models.
+
+#### Application & Limitations
+- Use cases are commonly used in object-oriented modeling.
+- They are considered by some as too fine-grained for initial requirements elicitation and are often more useful in system design.
+
+#### Interpretation of Use Cases
+- Some consider each use case as a single, low-level interaction scenario.
+- Others, like Stevens and Pooley, argue that a use case can include a set of related, low-level scenarios.
+  - This set would include a normal interaction scenario plus scenarios for each possible exception.
+
+In summary, use cases offer a structured way to document system-user interactions but may be too detailed for early stages of requirements engineering. They can be adapted to represent either single interactions or sets of related interactions.
+
+![img_21.png](img_21.png)
+
+#### 4.4.4 The software requirements document
 
 
 
