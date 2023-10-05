@@ -222,23 +222,214 @@ In summary, the Repository Architecture pattern is useful for systems that requi
 
 #### 6.3.3 Client-Server Architecture
 
+1. **Core Concept**:
+    - Focuses on runtime organization, particularly for distributed systems.
+    - Organized as a set of services offered by servers and accessed by clients.
+
+2. **Major Components**:
+    1. Servers: Offer services like printing, file management, or programming language compilation.
+    2. Clients: Access the services offered by servers.
+    3. Network: Allows clients to access servers, usually implemented as distributed systems using Internet protocols.
+
+3. **Applicability**:
+    - Common in distributed systems but can also be implemented on a single computer.
+    - Examples include multiuser, web-based systems for media management.
+
+4. **Advantages**:
+    - **Separation and Independence**: Services and servers can be changed without affecting other parts of the system.
+    - **Scalability**: Easy to add new servers or upgrade existing ones.
+    - **Effective Use of Networked Systems**: Allows for distribution across multiple processors.
+
+5. **Communication Protocol**:
+    - Typically uses a request–reply protocol like HTTP for remote procedure calls.
+    - Clients need to know the names of servers and services but servers don’t need to know client identities.
+
+6. **Example Use-case**:
+    - A multiuser web-based system for a film and photograph library, with separate servers for different media types and functionalities.
+
+In summary, the Client–Server Architecture pattern is well-suited for distributed systems requiring runtime organization. It offers advantages like separation, independence, and scalability, usually using a request–reply protocol for client-server communication. The architecture can also be adapted to single-computer implementations.
+
+![img_55.png](img_55.png)
+
+![img_56.png](img_56.png)
+
 #### 6.3.4 Pipe and Filter Architecture
 
+1. **Core Concept**:
+    - Focuses on runtime organization where functional transformations process inputs and produce outputs.
+    - Data flows sequentially or in parallel through transforms.
 
+2. **Terminology**:
+    - "Pipe" refers to the mechanism for passing data from one process to another.
+    - "Filter" refers to the transformation that processes the data.
 
+3. **Variants**:
+    - When transformations are sequential and data is processed in batches, it becomes a batch sequential model.
+    - Can also be used in embedded systems as a process pipeline.
 
+4. **Applicability**:
+    - Suited for batch processing systems and embedded systems.
+    - Not well-suited for interactive systems with complex I/O formats.
 
+5. **Example Use-case**:
+    - In a batch processing application, an organization issues invoices and then reconciles payments once a week. Receipts and reminders are generated based on payment status.
 
+6. **Challenges**:
+    - Difficult to implement in systems requiring interactive, event-based user interfaces.
 
+In summary, the Pipe and Filter Architecture pattern is primarily used for batch processing and embedded systems. It's based on functional transformations that can be executed either sequentially or in parallel. While effective for certain types of systems, it's not well-suited for interactive systems with complex user interactions.
 
+![img_57.png](img_57.png)
+
+![img_58.png](img_58.png)
 
 ### 6.4 Application Architectural
 
+1. **Core Concept**: 
+    - Application architectures encapsulate the essential characteristics of a class of systems, providing a common structural basis for quick development.
+
+2. **Types of Common Application Systems**:
+    1. **Transaction Processing Applications**: 
+        - Centered around databases, maintaining data integrity.
+        - Includes interactive banking, e-commerce, booking systems.
+    2. **Language Processing Systems**: 
+        - Interpret formal languages like programming languages.
+        - Includes compilers and database command interpreters.
+
+3. **Reuse and Adaptability**: 
+    - Application architectures can be reused and adapted for specific needs.
+    - Often found in Enterprise Resource Planning (ERP) systems and other configurable off-the-shelf systems.
+
+4. **Roles in Software Development**:
+    1. **Design Starting Point**: 
+        - Useful for initial architectural designs, especially when unfamiliar with the application type.
+    2. **Design Checklist**: 
+        - Can be used to compare and validate your architectural design against a generic model.
+    3. **Team Organization**: 
+        - Helps in assigning work based on stable structural features that can often be developed in parallel.
+    4. **Component Reuse Assessment**: 
+        - Facilitates evaluation of existing components for their reusability.
+    5. **Vocabulary for Discussion**: 
+        - Provides a common language for discussing and comparing different applications.
+
+5. **Commonality Across Domains**:
+    - Superficially different applications often share abstract application architectures, offering avenues for reuse and standardization.
+
+In summary, application architectures serve as blueprints for software systems, offering a starting point for design, a standard for validation, and a basis for team organization and component reuse. They are especially useful in commonly encountered types like transaction processing and language processing systems.
+
 #### 6.4.1 Transactional Processing Systems
+
+1. **Definition and Objective**: 
+    - Transaction processing systems handle user requests for database information or updates. 
+    - The primary objective is to maintain data integrity during operations.
+
+2. **Technical vs User Transactions**: 
+    - A technical database transaction is an atomic unit consisting of a sequence of operations. 
+    - A user transaction could be a coherent sequence of operations like querying flight times, which may not always require a technical transaction.
+
+3. **Example**: 
+    - Withdrawing money from an ATM involves multiple steps, from checking account balance to dispensing cash, all treated as a single transaction.
+
+4. **Interactive Nature**: 
+    - These are typically interactive systems where users make asynchronous service requests.
+  
+5. **Conceptual Architecture**:
+    - User initiates a request via an I/O component.
+    - Application-specific logic processes the request.
+    - A transaction manager, usually within the DBMS, ensures transaction completion.
+
+6. **Pipe and Filter Organization**: 
+    - Transaction processing systems may be organized following the "pipe and filter" pattern.
+    - Components are responsible for input, processing, and output.
+  
+7. **Example Architecture**:
+    - In a banking system with ATMs, the ATM software handles input and output, while the bank's database server handles processing.
+
+In summary, transaction processing systems are designed to handle database queries and updates in an interactive and atomic manner, ensuring data integrity. The architecture often involves I/O components, application-specific logic, and a transaction manager. They can also be designed following the "pipe and filter" architectural pattern.
+
+![img_59.png](img_59.png)
+
+![img_60.png](img_60.png)
 
 #### 6.4.2 Information Systems
 
+1. **Definition and Scope**:
+    - Information systems allow controlled access to large databases like library catalogs, flight timetables, or medical records.
+    - Often considered as transaction-based systems.
+    - Typically web-based, with user interfaces in web browsers.
+
+2. **General Architecture**:
+    - Modeled using a layered approach.
+    - Top layer for user interface, bottom layer for the database.
+    - User communications layer handles I/O.
+    - Information retrieval layer contains application-specific logic.
+  
+3. **Example: Mentcare System**:
+    - Four layers identified:
+        1. Browser-based user interface.
+        2. User interface functionality, including login and data validation.
+        3. System functionality like security, data creation/updating, and report generation.
+        4. Commercial database for transaction management and persistent storage.
+
+4. **Relation to Transaction Processing Systems**:
+    - Information systems can sometimes also be transaction processing systems.
+    - E-commerce systems are an example where the application-specific layer includes additional functionality like a shopping cart.
+
+5. **Multi-tier Client-Server Architecture**:
+    - Often implemented as distributed systems.
+    - Layers map to different servers:
+        1. Web server for user communications.
+        2. Application server for application-specific logic and information retrieval.
+        3. Database server for transaction management and data storage.
+  
+6. **Scalability**:
+    - Using multiple servers allows for high throughput.
+    - Scalable to handle thousands of transactions per minute.
+
+In summary, information systems are often web-based, layered architectures that provide controlled access to large databases. They can also function as transaction processing systems, as seen in e-commerce platforms. The architecture often maps to multi-tier client-server setups, allowing for scalability and high throughput.
+
+![img_61.png](img_61.png)
+
+![img_62.png](img_62.png)
+
 #### 6.4.3 Language Processing Systems
+
+1. **Purpose and Types**:
+    - Translate languages into alternative representations.
+    - May include compilers, XML translators, and natural language processing systems.
+    - Can translate programming languages into machine code or other languages like XML into database queries.
+
+2. **Basic Architecture**:
+    - Source language instructions are converted into instructions for an abstract machine.
+    - Another component interprets these instructions, potentially using data from the environment.
+
+3. **Components in a Programming Environment**:
+    - Lexical Analyzer: Converts input language tokens into internal form.
+    - Symbol Table: Holds information about names of entities used in the text.
+    - Syntax Analyzer: Checks the syntax and builds a syntax tree.
+    - Syntax Tree: Internal structure representing the program.
+    - Semantic Analyzer: Checks semantic correctness using the syntax tree and symbol table.
+    - Code Generator: Generates abstract machine code based on the syntax tree.
+
+4. **Additional Components**:
+    - In natural language translators, a dictionary may be included.
+    - Efficiency and redundancy analyzers can also be included.
+
+5. **Integrated Programming Support Tools**:
+    - Symbol table and syntax tree can act as central repositories for tool communication.
+    - Syntax-directed editors, program formatters, and other tools can interact through this repository.
+
+6. **Architectural Patterns**:
+    - Pipe and Filter Model: Effective for batch environments, organizes phases of analysis sequentially.
+    - Repository Model: Better for integrated language processing tools where immediate reflection of changes is needed.
+
+In summary, language processing systems serve to translate different types of languages and can have various architectures depending on their use-cases. In programming environments, they often include a series of analyzers and generators. The architecture may vary based on whether the system is designed for batch processing or needs to be integrated with other tools.
+
+![img_63.png](img_63.png)
+
+![img_64.png](img_64.png)
+
+![img_65.png](img_65.png)
 
 ---
 
