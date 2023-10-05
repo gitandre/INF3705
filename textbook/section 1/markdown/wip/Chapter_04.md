@@ -372,7 +372,42 @@ In summary, use cases offer a structured way to document system-user interaction
 
 #### 4.4.4 The software requirements document
 
+#### The Software Requirements Document (SRS)
+- Serves as an official statement specifying what developers should implement.
+- May include both user and system requirements.
+- Essential for outsourced systems, complex multi-team developments, and where detailed analysis is mandatory.
 
+#### Agile Methods vs Traditional Approaches
+1. **Agile Methods**: 
+  - Argue that requirements change rapidly, making a static document outdated quickly.
+  - Use incremental collection of user requirements through short user stories prioritized by users.
+2. **Traditional Approaches**: 
+  - Often require detailed documents, especially for business and dependability requirements.
+  - More suitable for stable or critical systems where safety and security are paramount.
+
+#### Target Audience
+- The document caters to a diverse set of users, from senior management to software engineers.
+- Due to the diversity of users, the document must be a compromise, providing both general overviews and detailed specifications.
+
+#### Level of Detail
+- Varies based on the type of system and the development process.
+- Outsourced or critical systems require more detailed specifications.
+- In-house, iterative developments may opt for less detailed initial requirements, refining them as the project progresses.
+
+#### Structure and Content
+- Often follows standards like IEEE 1998, which can be adapted to specific uses.
+- Should include information about future system evolution to guide designers and maintainers.
+- Comprehensive table of contents and document index are essential for complex systems.
+
+#### Variability
+- The content and structure are influenced by the type of software being developed and the development approach.
+- For in-house software products, focus is mainly on user requirements and high-level, nonfunctional system requirements.
+
+In summary, the Software Requirements Document is a versatile tool that varies in structure and detail depending on the project's needs. It balances between being comprehensive for developers and testers, and being understandable for stakeholders.
+
+![img_22.png](img_22.png)
+
+![img_23.png](img_23.png)
 
 ### 4.5 Requirements validation 
 
