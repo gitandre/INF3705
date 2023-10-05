@@ -50,19 +50,114 @@ Architectural design is a critical phase in the software development process, se
 
 ### 6.1 Architecture Design Decisions
 
+1. **Nature of Architectural Design**: 
+    - Not a formulaic process; depends on the system, the architect's experience, and specific requirements.
+    - Considered a series of decisions rather than a sequence of activities.
 
+2. **Structural Decisions**: 
+    - Architects make key structural decisions that impact both the system and its development.
+    - These decisions often depend on the architect's knowledge, experience, and the domain of the application.
 
+3. **Reuse and Domain Similarities**: 
+    - Systems in the same domain often share architectural similarities.
+    - Architects should identify what can be reused from existing architectures within the same or broader application classes.
 
+4. **Distributed vs. Localized Systems**: 
+    - The choice between a distributed and a localized architecture is crucial, especially for large systems.
+    - This choice affects performance and reliability.
 
+5. **Architectural Patterns and Styles**: 
+    - Based on well-known patterns like client–server or layered architectures.
+    - Patterns capture the essence of architectures used in different systems.
+
+6. **Non-Functional Requirements and Architecture**: 
+    - Architecture style should depend on non-functional requirements such as:
+        1. Performance: Localize critical operations to reduce component communications.
+        2. Security: Use layered structures with higher validation for innermost layers.
+        3. Safety: Co-locate safety-related operations to simplify validation and provide fail-safes.
+        4. Availability: Include redundant components for higher availability.
+        5. Maintainability: Use fine-grained, self-contained components for easier changes.
+
+7. **Potential Conflicts**: 
+    - Trade-offs may be necessary when multiple non-functional requirements are important.
+    - Different architectural patterns may be used for different parts of the system to balance conflicting requirements.
+
+8. **Evaluation of Architectural Design**: 
+    - Difficult to evaluate definitively, as the true test comes when the system is in use.
+    - Comparing against reference architectures or generic patterns can provide some level of evaluation.
+
+Architectural design is a complex and creative process that involves a series of crucial decisions. These decisions are influenced by various factors including the type of system, the architect's background, and specific functional and non-functional requirements. The chosen architecture profoundly affects the system's performance, security, and other attributes, necessitating careful consideration and sometimes trade-offs among conflicting requirements.
+
+![img_45.png](img_45.png)
 
 ### 6.2 Architectural Views
 
+1. **Purpose of Architectural Models**: 
+    - Used for discussing software requirements or design.
+    - Serve as documentation for detailed design and implementation.
+
+2. **Multiple Views for Complexity**: 
+    - A single diagram cannot capture all aspects of a system's architecture.
+    - Multiple views are often needed for both design and documentation.
+
+3. **Krutchen’s 4+1 View Model**: 
+    - Krutchen suggests four fundamental architectural views linked through use cases:
+        1. **Logical View**: Shows key abstractions as objects or object classes.
+        2. **Process View**: Shows runtime composition of interacting processes.
+        3. **Development View**: Shows software decomposition for development.
+        4. **Physical View**: Shows distribution of software components across hardware.
+
+4. **Hofmeister's Conceptual View**: 
+    - Hofmeister et al. add a "Conceptual View" that serves as an abstract representation of the system.
+    - Useful for decomposing high-level requirements and informing architectural decisions.
+
+5. **Informality vs Formality in Notations**: 
+    - UML often used informally for architecture description.
+    - Some argue for more specialized Architectural Description Languages (ADLs), but these are less accessible to non-specialists.
+
+6. **Agile Perspective on Documentation**: 
+    - Detailed design documentation is often seen as unnecessary in agile methods.
+    - Focus is on developing views useful for communication rather than complete documentation.
+
+In summary, architectural views serve to capture different aspects of a system's design and are crucial for both discussion and documentation. While there are formal methods and notations, such as UML and ADLs, the industry often leans towards more informal, accessible representations, especially in agile environments. Different architects and methodologies propose various sets of views, but the emphasis is on capturing what is most useful for the project's specific needs.
 
 
-
-
+![img_46.png](img_46.png)
 
 ### 6.3 Architectural patterns
+
+1. **Introduction and Origin**: 
+    - Patterns are stylized, reusable solutions in software engineering.
+    - The concept gained traction with a book on object-oriented design patterns (Gamma et al. 1995).
+
+2. **Other Types of Patterns**: 
+    - Exist in organizational design, usability, cooperative interaction, and configuration management.
+
+3. **Architectural Patterns vs Styles**: 
+    - Initially proposed as "architectural styles" in the 1990s.
+    - Detailed handbooks published on pattern-oriented software architecture.
+
+4. **Definition and Utility**: 
+    - Architectural patterns are abstract descriptions of tried and tested good practices.
+    - They include information on when to use them and their strengths and weaknesses.
+
+5. **Model-View-Controller (MVC) as an Example**: 
+    - Commonly used for interaction management in web-based systems.
+    - Descriptions often include pattern name, brief description, graphical model, and example usage.
+
+6. **Graphical Representations**: 
+    - Patterns can be illustrated from different views, like conceptual and runtime system architectures.
+
+7. **Scope and Limitations**: 
+    - Not all generic patterns can be described due to space limitations, but selected examples provide insights into good architectural design principles.
+
+In summary, architectural patterns offer a formalized way to introduce tried and tested system organizations into new projects. These patterns can vary in type and application but generally include guidelines on when and how to use them. They are often visually represented to give both conceptual and practical insights into their structure and utility.
+
+![img_49.png](img_49.png)
+
+![img_48.png](img_48.png)
+
+![img_47.png](img_47.png)
 
 #### 6.3.1 Layered Architecture
 
