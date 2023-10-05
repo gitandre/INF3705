@@ -52,6 +52,88 @@ Examples include:
 
 ### 4.1 Functional and non-functional requirements
 
+#### Types of Software System Requirements
+1. **Functional Requirements**: Statements detailing what services the system should provide, how it should respond to inputs, and its behavior under specific conditions.
+   - May also state what the system should not do.
+  
+2. **Non-Functional Requirements**: Constraints on the services or functions, including timing, development process, and standards.
+   - Generally apply to the system as a whole, not to individual features.
+
+#### Ambiguity and Interdependence in Requirements
+- The distinction between functional and non-functional requirements is not always clear-cut.
+- One requirement often generates or constrains other requirements.
+
+#### Overall System Requirements
+- System requirements specify not just the services or features but also the necessary functionality to ensure effective delivery.
+
+
+#### 4.1.1 Functional requirements
+
+#### Definition and Levels of Functional Requirements
+1. **User-Level Functional Requirements**: Written in natural language for system users and managers to understand.
+2. **System-Level Functional Requirements**: Detailed descriptions for developers, specifying system functions, inputs, outputs, and exceptions.
+3. **Variability in Detail**: Requirements can range from general to very specific, depending on organizational needs and existing systems.
+
+#### Off-the-Shelf Software and Information Requirements
+- In cases where off-the-shelf software suffices, the focus shifts from functional specifications to information requirements.
+- Information requirements specify needed data, its organization, and delivery method.
+
+#### Imprecision and Its Consequences
+- Ambiguous requirements can lead to misunderstandings between customers and developers, causing delays and increased costs.
+  
+#### Ideal Characteristics of Functional Requirements
+1. **Completeness**: All services and information required by the user should be defined.
+2. **Consistency**: Requirements should not be contradictory.
+
+#### Practical Limitations
+- Achieving completeness and consistency is often only possible for very small systems.
+- Large systems have multiple stakeholders with varying, and often inconsistent, needs.
+- Mistakes and omissions are common in specifications for large, complex systems.
+- Inconsistencies may only become apparent after deeper analysis or during development.
+
+![img_13.png](img_13.png)
+
+#### 4.1.2 Non-functional requirements
+
+### Key Points Summary
+
+#### Definition of Non-Functional Requirements
+- Non-functional requirements are not directly related to specific services but specify or constrain system characteristics such as reliability, response time, and memory use.
+
+#### Importance and Critical Nature
+- Often more critical than functional requirements, as failure to meet them can make the whole system unusable.
+
+#### Implementation Challenges
+1. **Architectural Impact**: Non-functional requirements may affect the overall system architecture.
+2. **Related Functional Requirements**: A single non-functional requirement might generate multiple related functional requirements and constraints.
+
+#### Sources of Non-Functional Requirements
+1. **Product Requirements**: Specify runtime behavior such as performance, reliability, and usability.
+2. **Organizational Requirements**: Derive from customer and developer policies, specifying operational and development process constraints.
+3. **External Requirements**: Imposed by external factors like regulations, legislation, or ethical considerations.
+
+#### Problems with Non-Functional Requirements
+- Often stated as general goals, leaving scope for interpretation and disputes.
+- Difficult to translate into measurable requirements.
+  
+#### Quantitative Specification
+- Whenever possible, non-functional requirements should be stated quantitatively for objective testing.
+
+#### Conflicts and Interactions
+- Non-functional requirements often conflict or interact with other functional or non-functional requirements, complicating implementation.
+
+#### Documentation Challenges
+- Difficult to separate functional and non-functional requirements in documentation while maintaining clarity on their interrelationships.
+
+#### Importance in Critical Systems
+- Reliability, safety, and confidentiality are especially important for systems where failure could have severe consequences.
+
+
+![img_14.png](img_14.png)
+
+![img_15.png](img_15.png)
+
+![img_16.png](img_16.png)
 
 
 ### 4.2 Requirements engineering processes
