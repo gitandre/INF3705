@@ -23,6 +23,16 @@
 
 ### 6.3 Architectural patterns
 
+#### 6.3.1 Layered Architecture
+
+#### 6.3.2 Repository Architecture
+
+#### 6.3.3 Client-Server Architecture
+
+#### 6.3.4 Pipe and Filter Architecture
+
+
+
 
 
 
@@ -30,6 +40,12 @@
 
 
 ### 6.4 Application Architectural
+
+#### 6.4.1 Transactional Processing Systems
+
+#### 6.4.2 Information Systems
+
+#### 6.4.3 Language Processing Systems
 
 ---
 
