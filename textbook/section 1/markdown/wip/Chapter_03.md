@@ -203,8 +203,77 @@
 
 ### 3.3 Agile Project Management
 
+#### Overview
+- Agile project management diverges from traditional plan-driven approaches, aiming for more flexibility and responsiveness.
+- Scrum has emerged as the most popular framework for organizing agile projects, providing a degree of external visibility.
+
+#### Scrum Framework
+- Focuses on project organization, not specific development practices like pair programming or test-first development.
+- Uses unique terminology like "ScrumMaster" instead of "Project Manager" to distinguish itself from traditional methods.
+
+#### Scrum Process Components
+1. **Product Backlog**: A prioritized list of features, requirements, and other tasks for the development team.
+2. **Sprint**: A time-boxed development cycle, usually 2-4 weeks long.
+3. **Sprint Backlog**: Specific tasks chosen for the current sprint based on priority and previous sprint velocity.
+4. **Daily Meetings (Scrums)**: Short meetings to review progress and re-prioritize work.
+5. **Sprint Review**: At the end of each sprint, team reviews work and process for improvement.
+
+#### Sprint Planning
+- Product Owner prioritizes backlog items.
+- Team estimates time required for the highest-priority items based on previous sprints' velocities.
+- Unfinished items return to the product backlog.
+
+#### Team Coordination
+- Uses Scrum board for daily interactions.
+- All team members have visibility into the work being done.
+
+#### Review and Feedback Loop
+- End-of-sprint review serves dual purposes: process improvement and product state assessment.
+  
+#### ScrumMaster Role
+- Although not formally a project manager, ScrumMasters often assume this role in organizations with a conventional management structure.
+
+#### Benefits of Using Scrum
+1. Manageable and understandable product chunks.
+2. Handles unstable requirements effectively.
+3. Enhances team communication and morale.
+4. Offers customers on-time delivery of increments.
+5. Builds trust between customers and developers.
+
+#### Distributed Scrum
+- Scrum is adaptable for distributed teams and multi-team environments, accommodating global development needs.
+
+#### Challenges
+- Originally designed for co-located teams, adaptations are needed for distributed teams.
+
+![img_6.png](img_6.png)
+
+![img_7.png](img_7.png)
+
+![img_8.png](img_8.png)
 
 ### 3.4 Scaling Agile Methods
+
+#### Initial Adoption
+- Agile methods were initially designed for small teams working on small to medium-sized projects in the same physical location.
+- Small companies with less bureaucracy were the early adopters.
+
+#### Need for Scaling
+- The demand for faster, customer-focused software delivery is equally relevant to larger systems and companies.
+  
+#### Facets of Scaling
+1. **Scaling Up**: Adapting agile methods to manage large software projects that cannot be handled by a single small team.
+2. **Scaling Out**: Extending the use of agile methods across various departments in a large organization with extensive software development experience.
+
+#### Challenges in Scaling
+- Larger organizations often have to deal with scaling up and scaling out simultaneously, especially when they win contracts for large projects.
+
+#### Productivity and Defects
+- There are claims of substantial productivity gains and defect reductions through the use of agile methods.
+- Scott Ambler suggests that for large systems and organizations, the productivity improvement is likely to be around 15% over 3 years, along with similar reductions in defects.
+
+#### Summary
+- Scaling agile methods is a complex but necessary evolution to fit the needs of larger projects and organizations. Expectations of productivity gains should be realistic.
 
 #### 3.4.1 Practical problems with agile methods
 
