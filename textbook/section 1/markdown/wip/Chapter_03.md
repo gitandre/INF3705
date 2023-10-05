@@ -12,10 +12,35 @@
 ### 3.2 Agile Development techniques
 
 
+
+#### 3.2.1 User Stories
+
+
+
+#### 3.2.2 Refactoring
+
+
+
+#### 3.2.3 Test-first Development (TDD)
+
+
+
+#### 3.2.4 Pair Programming
+
+
+
 ### 3.3 Agile Project Management
 
 
 ### 3.4 Scaling Agile Methods
+
+#### 3.4.1 Practical problems with agile methods
+
+#### 3.4.2 Agile and plan-driven methods
+
+#### 3.4.3 Agile methods for large systems
+
+#### 3.4.4 Agile methods across organizations
 
 
 ### Summary
