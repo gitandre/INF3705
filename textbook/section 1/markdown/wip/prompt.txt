@@ -1,5 +1,5 @@
 Please summarise into its key points:
-- keep any identified lists numberered or otherwise as prt of the key points and sub-section them
-
+- keep any identified lists numbered or otherwise as prt of the key points and sub-section them
+- out in standard output
 ---
 xxxx

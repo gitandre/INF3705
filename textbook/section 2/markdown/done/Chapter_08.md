@@ -8,44 +8,371 @@
 
 ### 8.1 Development testing:
 
-Development testing includes all testing activities that are carried out by the team developing the system. The tester of the software is usually the programmer who  developed that software. Some development processes use programmer/tester pairs  (Cusamano and Selby 1998) where each programmer has an associated tester who  232 Chapter 8 Software testing  Debugging  Debugging is the process of fixing errors and problems that have been discovered by testing. Using information from the program tests, debuggers use their knowledge of the programming language and the intended outcome of the test to locate and repair the program error. When you are debugging a program, you usually use interactive tools that provide extra information about program execution.  http://software-engineering-book.com/web/debugging/  develops tests and assists with the testing process. For critical systems, a more formal process may be used, with a separate testing group within the development team.  This group is responsible for developing tests and maintaining detailed records of  test results.  There are three stages of development testing:  1. Unit testing, where individual program units or object classes are tested. Unit testing should focus on testing the functionality of objects or methods.  2. Component testing, where several individual units are integrated to create composite components. Component testing should focus on testing the component  interfaces that provide access to the component functions.  3. System testing, where some or all of the components in a system are integrated and the system is tested as a whole. System testing should focus on testing component interactions.  Development testing is primarily a defect testing process, where the aim of testing is to discover bugs in the software. It is therefore usually interleaved with  debugging—the process of locating problems with the code and changing the program to fix these problems.
+#### Overview
+Development testing encompasses all testing activities conducted by the development team. The tester is often the programmer who wrote the software. Development testing serves mainly as a defect testing process aimed at bug discovery and is closely related to debugging.
 
-#### 8.1.1 Unit testing
+#### Testing Approaches
+- For standard projects, the developer often acts as the tester.
+- In some methodologies, each programmer has an associated tester who assists in the testing process.
+- For critical systems, a dedicated testing group within the development team may handle testing.
 
-Unit testing is the process of testing program components, such as methods or object classes. Individual functions or methods are the simplest type of component. Your  tests should be calls to these routines with different input parameters. You can use the approaches to test-case design discussed in Section 8.1.2 to design the function or method tests.  When you are testing object classes, you should design your tests to provide coverage of all of the features of the object. This means that you should test all operations associated with the object; set and check the value of all attributes associated with the object; and put the object into all possible states. This means that you should simulate all events that cause a state change.  Consider, for example, the weather station object from the example that I discussed  in Chapter 7. The attributes and operations of this object are shown in Figure 8.4.    8.1 ■ Development testing 233  WeatherStation  identifier  reportWeather ( )  reportStatus ( )  powerSave (instruments)  remoteControl (commands)  reconfigure (commands)  restart (instruments)  Figure 8.4 The weather  shutdown (instruments)  station object interface  It has a single attribute, which is its identifier. This is a constant that is set when the weather station is installed. You therefore only need a test that checks if it has been properly set up. You need to define test cases for all of the methods associated with the object such as reportWeather and reportStatus. Ideally, you should test methods in isolation, but, in some cases, test sequences are necessary. For example, to test the method that shuts down the weather station instruments (shutdown), you need to have  executed the restart method.  Generalization or inheritance makes object class testing more complicated. You  can’t simply test an operation in the class where it is defined and assume that it will work as expected in all of the subclasses that inherit the operation. The operation that is inherited may make assumptions about other operations and attributes. These assumptions may not be valid in some subclasses that inherit the operation. You  therefore have to test the inherited operation everywhere that it is used.  To test the states of the weather station, you can use a state model as discussed in Chapter 7 (Figure 7.8). Using this model, you identify sequences of state transitions that have to be tested and define event sequences to force these transitions. In principle, you should test every possible state transition sequence, although in practice this may be too expensive. Examples of state sequences that should be tested in the weather station include:  Shutdown → Running → Shutdown  Configuring → Running → Testing → Transmitting → Running  Running → Collecting → Running → Summarizing → Transmitting → Running  Whenever possible, you should automate unit testing. In automated unit testing, you  make use of a test automation framework, such as JUnit (Tahchiev et al. 2010) to write and run your program tests. Unit testing frameworks provide generic test classes that you extend to create specific test cases. They can then run all of the tests that you have implemented and report, often through some graphical unit interface (GUI), on the success or otherwise of the tests. An entire test suite can often be run in a few seconds, so it is possible to execute all tests every time you make a change to the program.  An automated test has three parts:  1. A setup part, where you initialize the system with the test case, namely, the inputs and expected outputs.  234 Chapter 8 ■ Software testing  2. A call part, where you call the object or method to be tested.  3. An assertion part, where you compare the result of the call with the expected result. If the assertion evaluates to true, the test has been successful; if false,  then it has failed.  Sometimes, the object that you are testing has dependencies on other objects that  may not have been implemented or whose use slows down the testing process. For  example, if an object calls a database, this may involve a slow setup process before it can be used. In such cases, you may decide to use mock objects.  Mock objects are objects with the same interface as the external objects being  used that simulate its functionality. For example, a mock object simulating a database may have only a few data items that are organized in an array. They can be  accessed quickly, without the overheads of calling a database and accessing disks.  Similarly, mock objects can be used to simulate abnormal operations or rare  events. For example, if your system is intended to take action at certain times of  day, your mock object can simply return those times, irrespective of the actual  clock time.
+#### Debugging
+- Debugging is the action of correcting errors found during testing.
+- Debuggers use specialized interactive tools to provide additional program execution information.
+- Debugging is typically interleaved with development testing.
 
-#### 8.1.2 Choosing unit test cases
+#### Stages of Development Testing
+1. **Unit Testing**
+    - Focuses on individual program units or object classes.
+    - The main objective is to test the functionality of objects or methods.
 
-Testing is expensive and time consuming, so it is important that you choose effective unit test cases. Effectiveness, in this case, means two things:  1. The test cases should show that, when used as expected, the component that you  are testing does what it is supposed to do.  2. If there are defects in the component, these should be revealed by test cases.  You should therefore design two kinds of test case. The first of these should  reflect normal operation of a program and should show that the component works.  For example, if you are testing a component that creates and initializes a new patient record, then your test case should show that the record exists in a database and that its fields have been set as specified. The other kind of test case should be based on testing experience of where common problems arise. It should use abnormal inputs to check that these are properly processed and do not crash the component.  Two strategies that can be effective in helping you choose test cases are:  1. Partition testing, where you identify groups of inputs that have common characteristics and should be processed in the same way. You should choose tests from  within each of these groups.  2. Guideline-based testing, where you use testing guidelines to choose test cases.  These guidelines reflect previous experience of the kinds of errors that programmers often make when developing components.    8.1 ■ Development testing 235  Input equivalence partitions  Output partitions  System  Figure 8.5 Equivalence  partitioning  Possible inputs  Correct outputs  Possible outputs  The input data and output results of a program can be thought of as members of  sets with common characteristics. Examples of these sets are positive numbers, negative numbers, and menu selections. Programs normally behave in a comparable way for  all members of a set. That is, if you test a program that does a computation and  requires two positive numbers, then you would expect the program to behave in the  same way for all positive numbers.  Because of this equivalent behavior, these classes are sometimes called equivalence partitions or domains (Bezier 1990). One systematic approach to test-case  design is based on identifying all input and output partitions for a system or component. Test cases are designed so that the inputs or outputs lie within these partitions.  Partition testing can be used to design test cases for both systems and components.  In Figure 8.5, the large shaded ellipse on the left represents the set of all possible inputs to the program that is being tested. The smaller unshaded ellipses represent  equivalence partitions. A program being tested should process all of the members of  an input equivalence partition in the same way.  Output equivalence partitions are partitions within which all of the outputs have  something in common. Sometimes there is a 1:1 mapping between input and output  equivalence partitions. However, this is not always the case; you may need to define a separate input equivalence partition, where the only common characteristic of the  inputs is that they generate outputs within the same output partition. The shaded area in the left ellipse represents inputs that are invalid. The shaded area in the right ellipse represents exceptions that may occur, that is, responses to invalid inputs.  Once you have identified a set of partitions, you choose test cases from each of  these partitions. A good rule of thumb for test-case selection is to choose test cases on the boundaries of the partitions, plus cases close to the midpoint of the partition.  The reason for this is that designers and programmers tend to consider typical values of inputs when developing a system. You test these by choosing the midpoint of the  partition. Boundary values are often atypical (e.g., zero may behave differently from other non-negative numbers) and so are sometimes overlooked by developers.  Program failures often occur when processing these atypical values.  236 Chapter 8 ■ Software testing  3  11  4  7  10  Less than 4  Between 4 and 10  More than 10  Number of input values  9999  100000  10000  50000  99999  Less than 10000  Between 10000 and 99999  More than 99999  Figure 8.6 Equivalence  partitions  Input values  You identify partitions by using the program specification or user documentation and from experience where you predict the classes of input value that are likely to detect errors. For example, say a program specification states that the program accepts four to eight inputs which are five-digit integers greater than 10,000. You use this information to identify the input partitions and possible test input values. These are shown in Figure 8.6.  When you use the specification of a system to identify equivalence partitions, this  is called black-box testing. You don’t need any knowledge of how the system works.  It is sometimes useful to supplement the black-box tests with “white-box testing,”  where you look at the code of the program to find other possible tests. For example, your code may include exceptions to handle incorrect inputs. You can use this  knowledge to identify “exception partitions”—different ranges where the same  exception handling should be applied.  Equivalence partitioning is an effective approach to testing because it helps  account for errors that programmers often make when processing inputs at the edges  of partitions. You can also use testing guidelines to help choose test cases. Guidelines encapsulate knowledge of what kinds of test cases are effective for discovering  errors. For example, when you are testing programs with sequences, arrays, or lists, guidelines that could help reveal defects include:  1. Test software with sequences that have only a single value. Programmers naturally think of sequences as made up of several values, and sometimes they  embed this assumption in their programs. Consequently, if presented with a  single-value sequence, a program may not work properly.  2. Use different sequences of different sizes in different tests. This decreases the chances that a program with defects will accidentally produce a correct output  because of some accidental characteristics of the input.  3. Derive tests so that the first, middle, and last elements of the sequence are  accessed. This approach reveals problems at partition boundaries.    8.1 ■ Development testing 237  Path testing  Path testing is a testing strategy that aims to exercise every independent execution path through a component or program. If every independent path is executed, then all statements in the component must have been executed at least once. All conditional statements are tested for both true and false cases. In an object-oriented development process, path testing may be used to test the methods associated with objects.  http://software-engineering-book.com/web/path-testing/  Whittaker’s book (Whittaker 2009) includes many examples of guidelines that  can be used in test-case design. Some of the most general guidelines that he suggests are:  ■ Choose inputs that force the system to generate all error messages:  ■ Design inputs that cause input buffers to overflow.  ■ Repeat the same input or series of inputs numerous times.  ■ Force invalid outputs to be generated.  ■ Force computation results to be too large or too small.  As you gain experience with testing, you can develop your own guidelines about  how to choose effective test cases. I give more examples of testing guidelines in the next section.
+2. **Component Testing**
+    - Involves testing integrated units to form composite components.
+    - Focuses on testing the interfaces that enable access to component functions.
 
-#### 8.1.3 Component testing
+3. **System Testing**
+    - Involves testing the system as a whole after integrating some or all components.
+    - Focuses on testing interactions between components.
 
-Software components are often made up of several interacting objects. For example,  in the weather station system, the reconfiguration component includes objects that  deal with each aspect of the reconfiguration. You access the functionality of these  objects through component interfaces (see Chapter 7). Testing composite components  should therefore focus on showing that the component interface or interfaces behave  according to its specification. You can assume that unit tests on the individual objects within the component have been completed.  Figure 8.7 illustrates the idea of component interface testing. Assume that components A, B, and C have been integrated to create a larger component or subsystem.  The test cases are not applied to the individual components but rather to the interface of the composite component created by combining these components. Interface errors  in the composite component may not be detectable by testing the individual objects  because these errors result from interactions between the objects in the component.  There are different types of interface between program components and, consequently, different types of interface error that can occur:  1. Parameter interfaces These are interfaces in which data or sometimes function references are passed from one component to another. Methods in an object  have a parameter interface.  238 Chapter 8 ■ Software testing  Test  cases  A  B  C  Figure 8.7 Interface  testing  2. Shared memory interfaces These are interfaces in which a block of memory is shared between components. Data is placed in the memory by one subsystem  and retrieved from there by other subsystems. This type of interface is used in  embedded systems, where sensors create data that is retrieved and processed by  other system components.  3. Procedural interfaces These are interfaces in which one component encapsulates a set of procedures that can be called by other components. Objects and  reusable components have this form of interface.  4. Message passing interfaces These are interfaces in which one component  requests a service from another component by passing a message to it. A return  message includes the results of executing the service. Some object-oriented systems have this form of interface, as do client–server systems.  Interface errors are one of the most common forms of error in complex systems  (Lutz 1993). These errors fall into three classes:  ■ Interface misuse A calling component calls some other component and makes an error in the use of its interface. This type of error is common in parameter interfaces, where parameters may be of the wrong type or be passed in the wrong order, or the wrong number of parameters may be passed.  ■ Interface misunderstanding A calling component misunderstands the specification of the interface of the called component and makes assumptions about its behavior.  The called component does not behave as expected, which then causes unexpected  behavior in the calling component. For example, a binary search method may be  called with a parameter that is an unordered array. The search would then fail.  ■ Timing errors These occur in real-time systems that use a shared memory or a message-passing interface. The producer of data and the consumer of data may    8.1 ■ Development testing 239  operate at different speeds. Unless particular care is taken in the interface design, the consumer can access out-of-date information because the producer of the  information has not updated the shared interface information.  Testing for interface defects is difficult because some interface faults may only  manifest themselves under unusual conditions. For example, say an object implements a queue as a fixed-length data structure. A calling object may assume that the queue is implemented as an infinite data structure, and so it does not check for queue overflow when an item is entered.  This condition can only be detected during testing by designing a sequence of test  cases that force the queue to overflow. The tests should check how calling objects  handle that overflow. However, as this is a rare condition, testers may think that this isn’t worth checking when writing the test set for the queue object.  A further problem may arise because of interactions between faults in different  modules or objects. Faults in one object may only be detected when some other  object behaves in an unexpected way. Say an object calls another object to receive  some service and the calling object assumes that the response is correct. If the called service is faulty in some way, the returned value may be valid but incorrect. The  problem is therefore not immediately detectable but only becomes obvious when  some later computation, using the returned value, goes wrong.  Some general guidelines for interface testing are:  1. Examine the code to be tested and identify each call to an external component.  Design a set of tests in which the values of the parameters to the external components are at the extreme ends of their ranges. These extreme values are most  likely to reveal interface inconsistencies.  2. Where pointers are passed across an interface, always test the interface with null pointer parameters.  3. Where a component is called through a procedural interface, design tests that  deliberately cause the component to fail. Differing failure assumptions are one  of the most common specification misunderstandings.  4. Use stress testing in message passing systems. This means that you should  design tests that generate many more messages than are likely to occur in practice. This is an effective way of revealing timing problems.  5. Where several components interact through shared memory, design tests that  vary the order in which these components are activated. These tests may reveal  implicit assumptions made by the programmer about the order in which the  shared data is produced and consumed.  Sometimes it is better to use inspections and reviews rather than testing to look  for interface errors. Inspections can concentrate on component interfaces and questions about the assumed interface behavior asked during the inspection process.  240 Chapter 8 ■ Software testing
+#### Conclusion
+Development testing is a critical part of the software development lifecycle. It is primarily concerned with defect discovery and is closely related to debugging. The approach to development testing may vary depending on the criticality of the system.
 
-#### 8.1.4 System testing
+### 8.1.1 Unit testing
 
-System testing during development involves integrating components to create a version of the system and then testing the integrated system. System testing checks that components are compatible, interact correctly, and transfer the right data at the right time across their interfaces. It obviously overlaps with component testing, but there are two important differences: 1. During system testing, reusable components that have been separately developed  and off-the-shelf systems may be integrated with newly developed components.  The complete system is then tested.  2. Components developed by different team members or subteams may be integrated  at this stage. System testing is a collective rather than an individual process. In  some companies, system testing may involve a separate testing team with no  involvement from designers and programmers.  All systems have emergent behavior. This means that some system functionality  and characteristics only become obvious when you put the components together.  This may be planned emergent behavior, which has to be tested. For example, you  may integrate an authentication component with a component that updates the system database. You then have a system feature that restricts information updating to  authorized users. Sometimes, however, the emergent behavior is unplanned and  unwanted. You have to develop tests that check that the system is only doing what it is supposed to do.  System testing should focus on testing the interactions between the components  and objects that make up a system. You may also test reusable components or systems to check that they work as expected when they are integrated with new components. This interaction testing should discover those component bugs that are only  revealed when a component is used by other components in the system. Interaction  testing also helps find misunderstandings, made by component developers, about  other components in the system.  Because of its focus on interactions, use case-based testing is an effective  approach to system testing. Several components or objects normally implement each  use case in the system. Testing the use case forces these interactions to occur. If you have developed a sequence diagram to model the use case implementation, you can  see the objects or components that are involved in the interaction.  In the wilderness weather station example, the system software reports summarized weather data to a remote computeras described in Figure 7.3. Figure 8.8 shows  the sequence of operations in the weather station when it responds to a request to collect data for the mapping system. You can use this diagram to identify operations that will be tested and to help design the test cases to execute the tests. Therefore issuing a request for a report will result in the execution of the following thread of methods: SatComms:request → WeatherStation:reportWeather → Commslink:Get(summary) → WeatherData:summarize    8.1 ■ Development testing 241  Weather  information system  SatComms  WeatherStation  Commslink  WeatherData  request (report)  acknowledge  reportWeather ()  acknowledge  get (summary)  summarise ()  send (report)  acknowledge  reply (report)  acknowledge  Figure 8.8 Collect  weather data  sequence chart  The sequence diagram helps you design the specific test cases that you need, as it  shows what inputs are required and what outputs are created:  1. An input of a request for a report should have an associated acknowledgment.  A report should ultimately be returned from the request. During testing, you  should create summarized data that can be used to check that the report is correctly organized.  2. An input request for a report to WeatherStation results in a summarized report  being generated. You can test this in isolation by creating raw data corresponding to the summary that you have prepared for the test of SatComms and checking that the WeatherStation object correctly produces this summary. This raw  data is also used to test the WeatherData object.  Of course, I have simplified the sequence diagram in Figure 8.8 so that it does not  show exceptions. A complete use case/scenario test must take these exceptions into  account and ensure that they are correctly handled.  For most systems, it is difficult to know how much system testing is essential and  when you should stop testing. Exhaustive testing, where every possible program  execution sequence is tested, is impossible. Testing, therefore, has to be based on a subset of possible test cases. Ideally, software companies should have policies for  choosing this subset. These policies might be based on general testing policies, such as a policy that all program statements should be executed at least once. Alternatively, they may be based on experience of system usage and focus on testing the features of the operational system. For example: 242 Chapter 8 ■ Software testing  Incremental integration and testing  System testing involves integrating different components, then testing the integrated system that you have created. You should always use an incremental approach to integration and testing where you integrate a component, test the system, integrate another component, test again, and so on. If problems occur, they are probably due to interactions with the most recently integrated component.  Incremental integration and testing is fundamental to agile methods, where regression tests are run every time a new increment is integrated.  http://software-engineering-book.com/web/integration/  1. All system functions that are accessed through menus should be tested.  2. Combinations of functions (e.g., text formatting) that are accessed through the  same menu must be tested.  3. Where user input is provided, all functions must be tested with both correct and incorrect input.  It is clear from experience with major software products such as word processors  or spreadsheets that similar guidelines are normally used during product testing.  When features of the software are used in isolation, they normally work. Problems  arise, as Whittaker explains (Whittaker 2009), when combinations of less commonly used features have not been tested together. He gives the example of how, in  a commonly used word processor, using footnotes with multicolumn layout causes  incorrect layout of the text.  Automated system testing is usually more difficult than automated unit or component testing. Automated unit testing relies on predicting the outputs and then encoding these predictions in a program. The prediction is then compared with the result.  However, the point of implementing a system may be to generate outputs that are  large or cannot be easily predicted. You may be able to examine an output and check  its credibility without necessarily being able to create it in advance.
+#### Overview
+Unit testing focuses on testing individual program components like methods or object classes. It aims for thorough coverage of all features of the object under test.
+
+#### Key Aspects of Unit Testing
+
+1. **Test Design**
+    - Your tests should include calls to the routines with varying input parameters.
+    - For object classes, strive to test all operations, attributes, and states associated with the object.
+
+2. **Testing Sequences**
+    - Some methods may require preconditions to be met or other methods to be executed first.
+    - For example, to test a `shutdown` method, a `restart` method might need to be executed first.
+
+3. **Inheritance Complications**
+    - Inheritance can complicate testing, as operations in parent classes may make assumptions that are not valid in subclasses.
+    - Inherited operations need to be tested in every subclass where they are used.
+
+4. **State Testing**
+    - Utilize state models to identify sequences of state transitions for testing.
+    - Example sequences include "Shutdown → Running → Shutdown" and "Configuring → Running → Testing → Transmitting → Running".
+
+5. **Automated Unit Testing**
+    - Make use of test automation frameworks like JUnit.
+    - Automated tests typically consist of three parts:
+        1. Setup: Initialize the system with the test case.
+        2. Call: Execute the object or method to be tested.
+        3. Assertion: Compare the result with the expected outcome.
+
+6. **Mock Objects**
+    - Used when the object under test has dependencies that are not yet implemented or would slow down testing.
+    - Mock objects simulate the functionality of real objects but are faster to set up and execute.
+
+#### Conclusion
+Unit testing is a critical and detailed activity that aims to validate the functionality of individual components. It often employs automated frameworks and may use mock objects to handle dependencies.
+
+### 8.1.2 Choosing unit test cases
+
+#### Objectives of Effective Test Cases
+1. Confirm that the component functions as expected.
+2. Uncover any defects in the component.
+
+#### Types of Test Cases
+1. **Normal Operation Cases**: Test if the component functions as expected under normal conditions.
+2. **Abnormal Operation Cases**: Use abnormal inputs to check that they are properly processed and do not crash the component.
+
+#### Strategies for Test Case Selection
+
+1. **Partition Testing**
+    - Identify groups of inputs with common characteristics.
+    - Design test cases so that inputs lie within these partitions.
+    - Rule of thumb: Choose test cases on the boundaries and close to the midpoint of each partition.
+
+2. **Guideline-based Testing**
+    - Use testing guidelines reflecting previous experience of common errors.
+  
+#### Input and Output Partitions
+- Input and output data can be categorized into sets with common characteristics, known as equivalence partitions.
+- Partition testing can be applied to both system and component levels.
+
+#### Black-box and White-box Testing
+- **Black-box Testing**: Based solely on the program specification.
+- **White-box Testing**: Involves looking at the code to find other possible tests, such as exception handling.
+
+#### Testing Guidelines for Sequences, Arrays, or Lists
+1. Test with sequences that have only a single value.
+2. Use sequences of different sizes in different tests.
+3. Access the first, middle, and last elements of the sequence.
+
+#### General Testing Guidelines
+- Choose inputs that force the system to generate all error messages.
+- Design inputs that cause input buffers to overflow.
+- Repeat the same input or series of inputs multiple times.
+- Force invalid outputs to be generated.
+- Force computation results to be too large or too small.
+
+#### Conclusion
+Choosing effective unit test cases is crucial for the verification of component functionality and the discovery of defects. The use of partition testing and guideline-based testing can aid in this selection process.
+
+### 8.1.3 Component testing
+
+#### Focus of Component Testing
+- Testing targets the component interfaces, assuming unit tests on individual objects are complete.
+- Interface errors in composite components may arise from interactions between objects.
+
+#### Types of Interfaces and Errors
+1. **Parameter Interfaces**
+    - Data or function references are passed between components.
+    - Common errors: wrong type, wrong order, or wrong number of parameters.
+  
+2. **Shared Memory Interfaces**
+    - Memory is shared between components, often in embedded systems.
+    - Common error: timing issues leading to outdated information.
+
+3. **Procedural Interfaces**
+    - One component provides a set of procedures for others to call.
+    - Common error: differing failure assumptions or misunderstandings about behavior.
+
+4. **Message Passing Interfaces**
+    - Components communicate through messages, common in client–server systems.
+    - Common error: timing problems due to different speeds of producer and consumer.
+
+#### Classes of Interface Errors
+1. **Interface Misuse**: Incorrect use of a component's interface by the calling component.
+2. **Interface Misunderstanding**: The calling component misunderstands the called component's behavior.
+3. **Timing Errors**: Occur in real-time systems, particularly with shared memory or message-passing interfaces.
+
+#### General Guidelines for Interface Testing
+1. Test with extreme values of parameter ranges to reveal inconsistencies.
+2. Always test with null pointer parameters where pointers are passed.
+3. Deliberately cause component failure through procedural interfaces to test assumptions.
+4. Use stress testing in message-passing systems to reveal timing problems.
+5. Vary the activation order of components interacting through shared memory.
+
+#### Alternatives to Testing
+- Inspections and reviews can sometimes be more effective for detecting interface errors.
+
+#### Summary
+Component testing is crucial for verifying the correct interaction between different parts of a system, focusing primarily on the interfaces. Different types of interfaces are susceptible to different kinds of errors, often arising from misunderstandings or misuse. Carefully designed testing strategies, sometimes supplemented by inspections, can help in identifying and rectifying these errors.
+
+### 8.1.4 System testing
+
+#### Objectives and Scope
+- Integrates and tests the complete system to check component compatibility and correct interaction.
+- Distinguishes itself from component testing by including reusable and off-the-shelf components and by being a collective process.
+
+#### Types of Behavior
+1. **Planned Emergent Behavior**: Tested to ensure the system performs as designed when components are integrated.
+2. **Unplanned Emergent Behavior**: Tests are developed to make sure the system only does what it is intended to do.
+
+#### Focus Areas
+- Emphasis on testing interactions between components and objects.
+- Use case-based testing is effective for this purpose, as it naturally involves multiple components.
+  
+#### Use Case and Sequence Diagrams
+- Useful for designing specific test cases, as they show required inputs and expected outputs.
+
+#### Challenges and Strategies
+- Difficult to determine the extent of system testing needed.
+- Exhaustive testing is impossible; testing is based on a subset of possible test cases.
+- Incremental integration and testing is recommended.
+
+#### Testing Policies
+1. Test all system functions accessed through menus.
+2. Test combinations of functions accessed through the same menu.
+3. Test all functions with both correct and incorrect user input.
+
+#### Automation Limitations
+- More difficult than automated unit or component testing due to unpredictable outputs.
+
+#### Summary
+System testing is a comprehensive process that aims to validate the integrated system as a whole, focusing on both planned and unplanned emergent behavior. It leverages use case-based testing and sequence diagrams to create effective test cases. The process faces challenges in determining the necessary extent and type of tests, often relying on incremental approaches and specific testing policies.
+
+---
 
 ### 8.2 Test-driven development
 
-8.2 Test-driven development  Test-driven development (TDD) is an approach to program development in which  you interleave testing and code development (Beck 2002; Jeffries and Melnik 2007).  You develop the code incrementally, along with a set of tests for that increment. You don’t start working on the next increment until the code that you have developed  passes all of its tests. Test-driven development was introduced as part of the XP agile development method. However, it has now gained mainstream acceptance and may  be used in both agile and plan-based processes.    8.2 ■ Test-driven development 243  Identify new  pass  functionality  Implement  fail  Write test  Run test  functionality and  refactor  Figure 8.9 Test-driven  development  The fundamental TDD process is shown in Figure 8.9. The steps in the process  are as follows:  1. You start by identifying the increment of functionality that is required. This  should normally be small and implementable in a few lines of code.  2. You write a test for this functionality and implement it as an automated test.  This means that the test can be executed and will report whether or not it has  passed or failed.  3. You then run the test, along with all other tests that have been implemented.  Initially, you have not implemented the functionality so the new test will fail.  This is deliberate as it shows that the test adds something to the test set.  4. You then implement the functionality and re-run the test. This may involve  refactoring existing code to improve it and add new code to what’s already there.  5. Once all tests run successfully, you move on to implementing the next chunk of  functionality.  An automated testing environment, such as the JUnit environment that supports  Java program testing (Tahchiev et al. 2010) is essential for TDD. As the code is  developed in very small increments, you have to be able to run every test each time  that you add functionality or refactor the program. Therefore, the tests are embedded in a separate program that runs the tests and invokes the system that is being tested.  Using this approach, you can run hundreds of separate tests in a few seconds.  Test-driven development helps programmers clarify their ideas of what a code  segment is actually supposed to do. To write a test, you need to understand what is  intended, as this understanding makes it easier to write the required code. Of course, if you have incomplete knowledge or understanding, then TDD won’t help.  If you don’t know enough to write the tests, you won’t develop the required code.  For example, if your computation involves division, you should check that you are  not dividing the numbers by zero. If you forget to write a test for this, then the checking code will never be included in the program.  As well as better problem understanding, other benefits of test-driven development are: 1. Code coverage In principle, every code segment that you write should have at least one associated test. Therefore, you can be confident that all of the code in 244 Chapter 8 ■ Software testing  the system has actually been executed. Code is tested as it is written, so defects  are discovered early in the development process.  2. Regression testing A test suite is developed incrementally as a program is developed. You can always run regression tests to check that changes to the program  have not introduced new bugs.  3. Simplified debugging When a test fails, it should be obvious where the problem lies. The newly written code needs to be checked and modified. You do  not need to use debugging tools to locate the problem. Reports of the use of  TDD suggest that it is hardly ever necessary to use an automated debugger in  test-driven development (Martin 2007).  4. System documentation The tests themselves act as a form of documentation that describe what the code should be doing. Reading the tests can make it easier to  understand the code.  One of the most important benefits of TDD is that it reduces the costs of regression testing. Regression testing involves running test sets that have successfully  executed after changes have been made to a system. The regression test checks that  these changes have not introduced new bugs into the system and that the new code  interacts as expected with the existing code. Regression testing is expensive and  sometimes impractical when a system is manually tested, as the costs in time and  effort are very high. You have to try to choose the most relevant tests to re-run and it is easy to miss important tests.  Automated testing dramatically reduces the costs of regression testing. Existing  tests may be re-run quickly and cheaply. After making a change to a system in test-first development, all existing tests must run successfully before any further functionality is added. As a programmer, you can be confident that the new functionality that you have added has not caused or revealed problems with existing code.  Test-driven development is of most value in new software development where  the functionality is either implemented in new code or by using components from  standard libraries. If you are reusing large code components or legacy systems, then you need to write tests for these systems as a whole. You cannot easily decompose  them into separate testable elements. Incremental test-driven development is impractical. Test-driven development may also be ineffective with multithreaded systems.  The different threads may be interleaved at different times in different test runs, and so may produce different results.  If you use TDD, you still need a system testing process to validate the system,  that is, to check that it meets the requirements of all of the system stakeholders.  System testing also tests performance, reliability, and checks that the system does  not do things that it shouldn’t do, such as produce unwanted outputs. Andrea (Andrea 2007) suggests how testing tools can be extended to integrate some aspects of system testing with TDD.  Test-driven development is now a widely used and mainstream approach to software testing. Most programmers who have adopted this approach are happy with it    8.3 ■ Release testing 245  and find it a more productive way to develop software. It is also claimed that use of TDD encourages better structuring of a program and improved code quality.  However, experiments to verify this claim have been inconclusive.
+#### Fundamental Process
+1. **Identify Functionality**: Start by identifying a small, implementable increment of functionality.
+2. **Write Test**: Create an automated test for the functionality.
+3. **Run Test**: Initially, the test will fail as the functionality is not yet implemented.
+4. **Implement Functionality**: Write code for the functionality and possibly refactor existing code.
+5. **Pass All Tests**: Ensure the new and existing tests all pass before moving on to the next functionality increment.
+
+#### Essential Tools
+- An automated testing environment, such as JUnit, is crucial for TDD due to the frequent running of tests.
+
+#### Advantages
+1. **Code Coverage**: Ensures all code segments are tested, identifying defects early.
+2. **Regression Testing**: Builds a test suite incrementally, allowing for easy regression tests.
+3. **Simplified Debugging**: When a test fails, the issue is likely in the newly written code, minimizing debugging effort.
+4. **System Documentation**: Tests act as documentation, explaining what the code is supposed to do.
+  
+#### Limitations
+- **Incomplete Knowledge**: If you don't know enough to write tests, you won't develop the required code.
+- **Large Component Reuse**: Not suitable for scenarios where large code components or legacy systems are being reused.
+- **Multithreaded Systems**: May produce inconsistent results due to interleaved threads.
+
+#### Regression Testing Costs
+- TDD significantly reduces the costs associated with regression testing by utilizing automated tests.
+
+#### Applicability
+- Useful in both agile and plan-based development processes.
+- Does not eliminate the need for system testing.
+
+#### Overall Effectiveness
+- Widely accepted and considered productive by most programmers.
+- Claims about improved code structure and quality are still inconclusive.
+
+#### Summary
+Test-Driven Development (TDD) is an iterative process that integrates coding with automated testing. It has benefits like early defect detection and simplified debugging but has limitations such as being less effective for legacy or multithreaded systems. It is a mainstream practice but still requires system testing for full validation.
+
+---
 
 ### 8.3 Release testing
 
-8.3 Release testing  Release testing is the process of testing a particular release of a system that is intended for use outside of the development team. Normally, the system release is for customers and users. In a complex project, however, the release could be for other teams that are developing related systems. For software products, the release could be for product management who then prepare it for sale.  There are two important distinctions between release testing and system testing  during the development process:  1. The system development, team should not be responsible for release testing.  2. Release testing is a process of validation checking to ensure that a system meets its requirements and is good enough for use by system customers. System testing by the development team should focus on discovering bugs in the system (defect testing).  The primary goal of the release testing process is to convince the supplier of the  system that it is good enough for use. If so, it can be released as a product or delivered to the customer. Release testing, therefore, has to show that the system delivers its specified functionality, performance, and dependability, and that it does not fail during normal use.  Release testing is usually a black-box testing process whereby tests are derived  from the system specification. The system is treated as a black box whose behavior  can only be determined by studying its inputs and the related outputs. Another name  for this is functional testing, so-called because the tester is only concerned with  functionality and not the implementation of the software.
+#### Definition
+- Release testing is the final testing phase for a system intended for external use, be it customers, other development teams, or product management.
 
-#### 8.3.1 Requirements-based testing
+#### Key Distinctions from System Testing
+1. **Responsibility**: The development team should not conduct release testing.
+2. **Purpose**: While system testing aims to discover bugs, release testing focuses on validating that the system meets its requirements and is fit for use by the customers.
 
-A general principle of good requirements engineering practice is that requirements should be testable. That is, the requirement should be written so that a test  can be designed for that requirement. A tester can then check that the requirement has been satisfied. Requirements-based testing, therefore, is a systematic  approach to test-case design where you consider each requirement and derive a  set of tests for it. Requirements-based testing is validation rather than defect  testing—you are trying to demonstrate that the system has properly implemented  its requirements.  246 Chapter 8 ■ Software testing  For example, consider the following Mentcare system requirements that are concerned with checking for drug allergies:  If a patient is known to be allergic to any particular medication, then prescription of that medication shall result in a warning message being issued to the  system user.  If a prescriber chooses to ignore an allergy warning, he or she shall provide  a reason why this has been ignored.  To check if these requirements have been satisfied, you may need to develop several related tests:  1. Set up a patient record with no known allergies. Prescribe medication for allergies that are known to exist. Check that a warning message is not issued by the  system.  2. Set up a patient record with a known allergy. Prescribe the medication that the  patient is allergic to and check that the warning is issued by the system.  3. Set up a patient record in which allergies to two or more drugs are recorded.  Prescribe both of these drugs separately and check that the correct warning for  each drug is issued.  4. Prescribe two drugs that the patient is allergic to. Check that two warnings are correctly issued.  5. Prescribe a drug that issues a warning and overrule that warning. Check that the system requires the user to provide information explaining why the warning was  overruled.  You can see from this list that testing a requirement does not mean just writing a  single test. You normally have to write several tests to ensure that you have coverage of the requirement. You should also keep traceability records of your requirements-based testing, which link the tests to the specific requirements that you have tested.
+#### Primary Goal
+- The main objective is to convince the supplier that the system is good enough for release. It must deliver on its specified functionality, performance, and dependability, and not fail during normal use.
 
-#### 8.3.2 Scenario testing
+#### Testing Approach
+- Typically, employs black-box testing, where tests are based on the system specification.
+- Also known as functional testing, as the focus is solely on the system's functionality and not its implementation.
 
-Scenario testing is an approach to release testing whereby you devise typical scenarios of use and use these scenarios to develop test cases for the system. A scenario is a story that describes one way in which the system might be used. Scenarios  should be realistic, and real system users should be able to relate to them. If you have used scenarios or user stories as part of the requirements engineering process  (described in Chapter 4), then you may be able to reuse them as testing scenarios.  In a short paper on scenario testing, Kaner (Kaner 2003) suggests that a scenario  test should be a narrative story that is credible and fairly complex. It should motivate stakeholders; that is, they should relate to the scenario and believe that it is    8.3 ■ Release testing 247  George is a nurse who specializes in mental health care. One of his responsibilities is to visit patients at home to check that their treatment is effective and that they are not suffering from medication side effects.  On a day for home visits, George logs into the Mentcare system and uses it to print his schedule of home visits for that day, along with summary information about the patients to be visited. He requests that the records for these patients be downloaded to his laptop. He is prompted for his key phrase to encrypt the records on the laptop.  One of the patients whom he visits is Jim, who is being treated with medication for depression. Jim feels that the medication is helping him but believes that it has the side effect of keeping him awake at night. George looks up Jim’s record and is prompted for his key phrase to decrypt the record. He checks the drug prescribed and queries its side effects. Sleeplessness is a known side effect, so he notes the problem in Jim’s record and suggests that he visit the clinic to have his medication changed. Jim agrees, so George enters a prompt to call him when he gets back to the clinic to make an appointment with a physician. George ends the consultation, and the system re-encrypts Jim’s record.  After finishing his consultations, George returns to the clinic and uploads the records of patients visited to the database. The system generates a call list for George of those patients whom he has to contact for follow-up information and make clinic appointments.  Figure 8.10 A user  important that the system passes the test. He also suggests that it should be easy to story for the  Mentcare system  evaluate. If there are problems with the system, then the release testing team should recognize them.  As an example of a possible scenario from the Mentcare system, Figure 8.10  describes one way that the system may be used on a home visit. This scenario tests a number of features of the Mentcare system:  1. Authentication by logging on to the system.  2. Downloading and uploading of specified patient records to a laptop.  3. Home visit scheduling.  4. Encryption and decryption of patient records on a mobile device.  5. Record retrieval and modification.  6. Links with the drugs database that maintains side-effect information.  7. The system for call prompting.  If you are a release tester, you run through this scenario, playing the role of  George and observing how the system behaves in response to different inputs. As  George, you may make deliberate mistakes, such as inputting the wrong key phrase  to decode records. This checks the response of the system to errors. You should carefully note any problems that arise, including performance problems. If a system is  too slow, this will change the way that it is used. For example, if it takes too long to encrypt a record, then users who are short of time may skip this stage. If they then lose their laptop, an unauthorized person could then view the patient records.  When you use a scenario-based approach, you are normally testing several requirements within the same scenario. Therefore, as well as checking individual requirements, you are also checking that combinations of requirements do not cause problems.  248 Chapter 8 ■ Software testing
+#### Summary
+Release testing is the validation phase that ensures a system is ready for external use. It is distinct from system testing, primarily in its responsibility and purpose. The approach commonly used is black-box or functional testing.
 
-#### 8.3.3 Performance testing
+### 8.3.1 Requirements-based testing
 
-Once a system has been completely integrated, it is possible to test for emergent  properties, such as performance and reliability. Performance tests have to be  designed to ensure that the system can process its intended load. This usually  involves running a series of tests where you increase the load until the system performance becomes unacceptable.  As with other types of testing, performance testing is concerned both with demonstrating that the system meets its requirements and discovering problems and  defects in the system. To test whether performance requirements are being achieved,  you may have to construct an operational profile. An operational profile (see Chapter 11) is a set of tests that reflect the actual mix of work that will be handled by the system.  Therefore, if 90% of the transactions in a system are of type A, 5% of type B, and the remainder of types C, D, and E, then you have to design the operational profile so  that the vast majority of tests are of type A. Otherwise, you will not get an accurate test of the operational performance of the system.  This approach, of course, is not necessarily the best approach for defect testing.  Experience has shown that an effective way to discover defects is to design tests  around the limits of the system. In performance testing, this means stressing the system by making demands that are outside the design limits of the software. This is  known as stress testing.  Say you are testing a transaction processing system that is designed to process up  to 300 transactions per second. You start by testing this system with fewer than  300 transactions per second. You then gradually increase the load on the system  beyond 300 transactions per second until it is well beyond the maximum design load  of the system and the system fails.  Stress testing helps you do two things:  1. Test the failure behavior of the system. Circumstances may arise through an  unexpected combination of events where the load placed on the system exceeds  the maximum anticipated load. In these circumstances, system failure should  not cause data corruption or unexpected loss of user services. Stress testing  checks that overloading the system causes it to “fail-soft” rather than collapse  under its load.  2. Reveal defects that only show up when the system is fully loaded. Although it can be argued that these defects are unlikely to cause system failures in normal use, there may be unusual combinations of circumstances that the stress testing replicates.  Stress testing is particularly relevant to distributed systems based on a network of processors. These systems often exhibit severe degradation when they are heavily  loaded. The network becomes swamped with coordination data that the different  processes must exchange. The processes become slower and slower as they wait for  the required data from other processes. Stress testing helps you discover when the  degradation begins so that you can add checks to the system to reject transactions  beyond this point.    8.4 ■ User testing 249
+#### Definition
+- Focuses on ensuring each requirement is testable and then designing a test case for it.
+- The aim is to validate that the system has properly implemented its requirements.
+
+#### Testing Approach
+- Derive a set of tests for each requirement.
+- Typically, involves multiple tests for each requirement to ensure full coverage.
+
+#### Example Scenario
+For a Mentcare system concerned with drug allergies, several related tests may need to be developed:
+1. **No Allergies**: Create a patient record with no known allergies and prescribe medication. Verify that no warning message is issued.
+2. **Known Allergy**: Create a patient record with a known allergy and prescribe that medication. Verify that a warning is issued.
+3. **Multiple Allergies**: Create a patient record with allergies to two or more drugs. Prescribe these drugs separately and verify that the correct warnings are issued.
+4. **Multiple Warnings**: Prescribe two drugs that the patient is allergic to and verify that two warnings are issued.
+5. **Overrule Warning**: Prescribe a drug that triggers a warning, overrule it, and verify that the system prompts for a reason for the override.
+
+#### Traceability
+- Maintain records linking tests to specific requirements to ensure each requirement is adequately tested.
+
+#### Summary
+Requirements-based testing is a systematic approach to validate the implementation of each system requirement. It often involves multiple test cases per requirement for comprehensive coverage and maintains traceability records.
+
+### 8.3.2 Scenario testing
+
+#### Definition
+- Scenario testing is an approach to release testing using typical scenarios or stories that describe one way the system might be used.
+- Targets real-world use cases to develop test cases for the system.
+
+#### Characteristics of a Good Scenario
+- Should be a credible, fairly complex narrative story.
+- Should be relatable to stakeholders.
+
+#### Example Scenario: Mentcare System
+The scenario involves a nurse named George who uses the Mentcare system during home visits to patients. The scenario tests multiple features:
+1. **Authentication**: Logging into the system.
+2. **Data Transfer**: Downloading and uploading patient records to a laptop.
+3. **Scheduling**: Managing home visit schedules.
+4. **Encryption/Decryption**: Secure handling of patient records on a mobile device.
+5. **Record Modification**: Retrieval and modification of patient records.
+6. **Drug Database**: Interfacing with a database that maintains drug side-effect information.
+7. **Call Prompting**: Generating a call list for follow-up actions.
+
+#### Testing Approach
+- Role-play the scenario and go through it step-by-step.
+- Deliberately introduce errors to test the system's robustness.
+- Note any issues, including performance problems.
+
+#### Benefits
+- Tests multiple requirements within a single scenario.
+- Helps in checking that combinations of requirements do not cause issues.
+- Useful for identifying usability and performance issues that might change real-world use.
+
+#### Summary
+Scenario testing involves using realistic, complex stories that stakeholders can relate to for release testing. It enables the testing of multiple features and their combinations, often revealing issues not easily caught by isolated requirement-based tests.
+
+### 8.3.3 Performance testing
+
+#### Objectives
+- Test emergent properties like performance and reliability once the system is completely integrated.
+- Aim to ensure that the system can handle its intended load.
+
+#### Two-Fold Focus
+1. **Demonstrate Compliance**: Show that the system meets its performance requirements.
+2. **Defect Identification**: Discover problems and defects, particularly those that manifest under heavy load.
+
+#### Operational Profile
+- A set of tests reflecting the actual mix of work the system will handle.
+- For example, if 90% of transactions are of type A, the operational profile should predominantly test type A transactions to get an accurate measure of performance.
+
+#### Stress Testing
+- Purposefully overload the system to test its limits.
+- Gradually increase the load beyond the system's maximum design limit to test how it behaves under failure conditions.
+
+### Goals of Stress Testing
+1. **Test Failure Behavior**: Ensure that system failure under extreme conditions does not result in data corruption or loss of services. Aim for a "fail-soft" rather than a collapse.
+2. **Reveal Hidden Defects**: Identify defects that may only show up when the system is fully loaded.
+
+#### Applicability
+- Especially relevant for distributed systems where network load can significantly affect performance.
+- Helps identify the point at which system degradation begins, allowing for transaction rejection beyond this point.
+
+#### Summary
+Performance testing is crucial for ensuring that a system can handle its intended load and for identifying potential defects. It often involves the use of an operational profile for realistic testing and employs stress testing to examine the system's behavior under extreme conditions. This is particularly important for distributed systems where performance degradation can be a major issue.
+
+---
 
 ### 8.4 User testing
 
-8.4 User testing  User or customer testing is a stage in the testing process in which users or customers provide input and advice on system testing. This may involve formally testing a system that has been commissioned from an external supplier. Alternatively, it may be an informal process where users experiment with a new software product to see if  they like it and to check that it does what they need. User testing is essential, even when comprehensive system and release testing have been carried out. Influences  from the user’s working environment can have a major effect on the reliability, performance, usability, and robustness of a system.  It is practically impossible for a system developer to replicate the system’s working environment, as tests in the developer’s environment are inevitably artificial. For example, a system that is intended for use in a hospital is used in a clinical environment where other things are going on, such as patient emergencies and conversations with relatives. These all affect the use of a system, but developers cannot include  them in their testing environment.  There are three different types of user testing:  1. Alpha testing, where a selected group of software users work closely with the development team to test early releases of the software.  2. Beta testing, where a release of the software is made available to a larger group of users to allow them to experiment and to raise problems that they discover  with the system developers.  3. Acceptance testing, where customers test a system to decide whether or not it is ready to be accepted from the system developers and deployed in the customer environment.  In alpha testing, users and developers work together to test a system as it is being developed. This means that the users can identify problems and issues that are not  readily apparent to the development testing team. Developers can only really work  from the requirements, but these often do not reflect other factors that affect the  practical use of the software. Users can therefore provide information about practice that helps with the design of more realistic tests.  Alpha testing is often used when developing software products or apps. Experienced  users of these products may be willing to get involved in the alpha testing process  because this gives them early information about new system features that they can  exploit. It also reduces the risk that unanticipated changes to the software will have disruptive effects on their business. However, alpha testing may also be used when  custom software is being developed. Agile development methods advocate user  involvement in the development process, and that users should play a key role in  designing tests for the system.  Beta testing takes place when an early, sometimes unfinished, release of a software system is made available to a larger group of customers and users for evaluation.  Beta testers may be a selected group of customers who are early adopters of the system.  250 Chapter 8 ■ Software testing  Test  Test  Testing  Tests  Test  criteria  plan  results  report  Define  Plan  Derive  Run  Negotiate  Accept or  acceptance  acceptance  acceptance  acceptance  test results  reject  criteria  testing  tests  tests  system  Figure 8.11 The  Alternatively, the software may be made publicly available for use by anyone who is  acceptance testing  interested in experimenting with it.  process  Beta testing is mostly used for software products that are used in many different  settings. This is important as, unlike custom product developers, there is no way for the product developer to limit the software’s operating environment. It is impossible for product developers to know and replicate all the settings in which the software product will be used. Beta testing is therefore used to discover interaction problems between the software and features of its operational environment. Beta testing is also a form of marketing. Customers learn about their system and what it can do for them.  Acceptance testing is an inherent part of custom systems development. Customers  test a system, using their own data, and decide if it should be accepted from the system developer. Acceptance implies that final payment should be made for the software.  Figure 8.11 shows that here are six stages in the acceptance testing process:  1. Define acceptance criteria This stage should ideally take place early in the process before the contract for the system is signed. The acceptance criteria should  be part of the system contract and be approved by the customer and the developer. In practice, however, it can be difficult to define criteria so early in the  process. Detailed requirements may not be available, and the requirements will  almost certainly change during the development process.  2. Plan acceptance testing This stage involves deciding on the resources, time, and budget for acceptance testing and establishing a testing schedule. The acceptance test plan should also discuss the required coverage of the requirements and the order in which system features are tested. It should define risks to the testing process such as system crashes and inadequate performance, and discuss how  these risks can be mitigated.  3. Derive acceptance tests Once acceptance criteria have been established, tests have to be designed to check whether or not a system is acceptable. Acceptance  tests should aim to test both the functional and nonfunctional characteristics  (e.g., performance) of the system. They should ideally provide complete coverage of the system requirements. In practice, it is difficult to establish completely objective acceptance criteria. There is often scope for argument about whether  or not a test shows that a criterion has definitely been met.  4. Run acceptance tests The agreed acceptance tests are executed on the system.  Ideally, this step should take place in the actual environment where the system  will be used, but this may be disruptive and impractical. Therefore, a user testing    8.4 ■ User testing 251  environment may have to be set up to run these tests. It is difficult to automate  this process as part of the acceptance tests may involve testing the interactions  between end-users and the system. Some training of end-users may be required.  5. Negotiate test results It is very unlikely that all of the defined acceptance tests will pass and that there will be no problems with the system. If this is the case,  then acceptance testing is complete and the system can be handed over. More  commonly, some problems will be discovered. In such cases, the developer and  the customer have to negotiate to decide if the system is good enough to be used.  They must also agree on how the developer will fix the identified problems.  6. Reject/accept system This stage involves a meeting between the developers and the customer to decide on whether or not the system should be accepted. If the  system is not good enough for use, then further development is required to fix  the identified problems. Once complete, the acceptance testing phase is repeated.  You might think that acceptance testing is a clear-cut contractual issue. If a system does not pass its acceptance tests, then it should not be accepted and payment should not be made. However, the reality is more complex. Customers want to use the software as soon as they can because of the benefits of its immediate deployment. They may have bought new hardware, trained staff, and changed their processes. They may  be willing to accept the software, irrespective of problems, because the costs of not using the software are greater than the costs of working around the problems.  Therefore, the outcome of negotiations may be conditional acceptance of the system. The customer may accept the system so that deployment can begin. The system  provider agrees to repair urgent problems and deliver a new version to the customer  as quickly as possible.  In agile methods such as Extreme Programming, there may be no separate acceptance testing activity. The end-user is part of the development team (i.e., he or she is an alpha tester) and provides the system requirements in terms of user stories. He or she is also responsible for defining the tests, which decide whether or not the developed software supports the user stories. These tests are therefore equivalent to acceptance tests. The tests are automated, and development does not proceed until  the story acceptance tests have successfully been executed.  When users are embedded in a software development team, they should ideally be  “typical” users with general knowledge of how the system will be used. However, it  can be difficult to find such users, and so the acceptance tests may actually not be a true reflection of how a system is used in practice. Furthermore, the requirement for automated testing limits the flexibility of testing interactive systems. For such systems, acceptance testing may require groups of end-users to use the system as if it was part of their everyday work. Therefore, while an “embedded user” is an attractive notion in principle, it does not necessarily lead to high-quality tests of the system.  The problem of user involvement in agile teams is one reason why many companies use a mix of agile and more traditional testing. The system may be developed  using agile techniques, but, after completion of a major release, separate acceptance testing is used to decide if the system should be accepted.  252 Chapter 8 ■ Software testing  K e y P o i n t s  ■ Testing can only show the presence of errors in a program. It cannot show that there are no remaining faults.  ■ Development testing is the responsibility of the software development team. A separate team should be responsible for testing a system before it is released to customers. In the user testing process, customers or system users provide test data and check that tests are successful.  ■ Development testing includes unit testing in which you test individual objects and methods; component testing in which you test related groups of objects; and system testing in which you test partial or complete systems.  ■ When testing software, you should try to “break” the software by using experience and guidelines to choose types of test cases that have been effective in discovering defects in other systems.  ■ Wherever possible, you should write automated tests. The tests are embedded in a program that can be run every time a change is made to a system.  ■ Test-first development is an approach to development whereby tests are written before the code to be tested. Small code changes are made, and the code is refactored until all tests execute successfully.  ■ Scenario testing is useful because it replicates the practical use of the system. It involves inventing a typical usage scenario and using this to derive test cases.  ■ Acceptance testing is a user testing process in which the aim is to decide if the software is good enough to be deployed and used in its planned operational environment.
+#### Overview
+- User testing involves customers or users providing input and advice on system testing.
+- Essential for capturing influences from the user’s working environment that can affect system reliability, performance, and usability.
+
+#### Types of User Testing
+1. **Alpha Testing**: A selected group of users works closely with developers to test early releases.
+   - Allows for early identification of problems and issues not apparent to the development team.
+   - Commonly used in both product development and agile methodologies.
+  
+2. **Beta Testing**: A larger group of users tests an early release of the software.
+   - Used to discover interaction problems between the software and its operational environment.
+   - Also serves as a form of marketing.
+
+3. **Acceptance Testing**: Customers test the system to decide if it's ready for deployment.
+   - Integral part of custom systems development.
+   - Outcome may lead to conditional acceptance of the system.
+
+#### Stages in Acceptance Testing
+1. **Define Acceptance Criteria**: Should be part of the system contract and approved by both parties.
+2. **Plan Acceptance Testing**: Involves resource allocation, time, budget, and risk mitigation strategies.
+3. **Derive Acceptance Tests**: Aim to cover both functional and nonfunctional characteristics of the system.
+4. **Run Acceptance Tests**: Ideally conducted in the actual environment where the system will be used.
+5. **Negotiate Test Results**: Developer and customer negotiate whether the system is good enough to be used.
+6. **Reject/Accept System**: A final decision is made based on test outcomes and negotiations.
+
+#### Agile Methods
+- In agile methods like Extreme Programming, the end-user is part of the development team.
+- These users should ideally be "typical" users, but finding such users can be challenging.
+  
+#### Challenges and Limitations
+- It's difficult for developers to replicate the user’s actual working environment.
+- Requirement for automated testing in agile methods limits the flexibility of interactive systems.
+
+#### Summary
+User testing is a vital part of the software development process, offering different types like Alpha, Beta, and Acceptance testing. Each has its own unique focus and is suited for different stages of the development cycle. The practice is essential for capturing the nuances of a real-world user environment, which are often impossible for developers to replicate.
