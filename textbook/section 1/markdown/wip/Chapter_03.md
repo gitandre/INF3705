@@ -330,8 +330,40 @@
 
 ![img_10.png](img_10.png)
 
-
 #### 3.4.3 Agile methods for large systems
+
+#### Complexity Factors in Large Systems
+1. **Systems of Systems**: Different teams in different locations work on sub-systems, lacking a holistic view.
+2. **Brownfield Systems**: Large systems often interact with existing systems, requiring complex negotiations and less flexibility.
+3. **Configuration Over Coding**: A significant portion of development is related to system configuration.
+4. **External Constraints**: Rules and regulations often dictate the development processes and documentation.
+5. **Long Development Time**: Maintaining a coherent team over an extended period is challenging.
+6. **Diverse Stakeholders**: Involving all types of stakeholders in the development process is difficult.
+
+#### Scaling Agile Frameworks
+- **Scaled Agile Framework (SAFe)**: Developed to support large-scale, multi-team software development.
+- **Agile Scaling Model (ASM)**: Involves stages like Disciplined Agile Delivery and Agility at Scale to adapt to organizational settings and large project complexities.
+
+#### Common Features in Scaling Agile
+1. **Initial Requirements**: Some early work on initial software requirements is essential but should be general.
+2. **Multiple Product Owners**: Different parts of the system require different representatives who must communicate continuously.
+3. **More Design and Documentation**: Up-front design and critical system documentation are necessary.
+4. **Cross-Team Communication**: Various communication channels and regular meetings are vital for syncing progress across teams.
+5. **Configuration Management**: Tools that support multi-team software development are essential.
+
+#### Multi-Team Scrum Characteristics
+1. **Role Replication**: Each team has its own Product Owner and ScrumMaster, with chief roles overseeing the entire project.
+2. **Product Architects**: Each team selects an architect who collaborates on the overall system architecture.
+3. **Release Alignment**: Product release dates are synchronized across teams.
+4. **Scrum of Scrums**: A higher-level Scrum meeting occurs daily to discuss progress, identify problems, and plan the day's work.
+
+#### Final Thoughts
+- No single model suits all large-scale agile products; customization is often required.
+- Agile methods need to evolve and integrate plan-based practices to tackle the complexities of large systems.
+
+![img_11.png](img_11.png)
+
+![img_12.png](img_12.png)
 
 #### 3.4.4 Agile methods across organizations
 
