@@ -184,4 +184,68 @@
 ![img_9.png](img_9.png)
 
 ### 2.3 Coping With Change
+
+#### 2.3.1 Prototyping
+
+#### Definition and Importance
+- A prototype is an early version of a system to explore design options and clarify requirements.
+- Rapid, iterative development is crucial to control costs and allow early stakeholder engagement.
+
+#### Applications in Software Development
+1. **Requirements Engineering**: Helps in the elicitation and validation of system requirements.
+2. **System Design**: Used to explore software solutions and develop the user interface.
+
+#### User Interaction
+- Allows users to assess system utility and may inspire new requirements.
+- Can reveal errors and omissions in the existing requirements.
+
+#### Design Experiments
+- Prototyping can validate the feasibility of design elements, such as database design for efficient data access.
+  
+#### User Interface Development
+- Rapid prototyping involving end-users is essential for developing dynamic user interfaces.
+
+#### Process Model for Prototype Development
+1. **Objective Setting**: Clearly define what the prototype aims to achieve.
+2. **Scope Definition**: Decide what to include or exclude to manage costs and delivery time.
+3. **Prototype Evaluation**: Includes user training and a plan based on the objectives.
+
+#### Evaluation Challenges
+- Users may not interact with the prototype the same way they will with the final system.
+- Prototype testers may not be representative of all system users.
+- Time constraints during evaluation may limit user training and adaptability.
+
+#### Quality Considerations
+- Non-functional requirements like response time and memory usage may be relaxed.
+- Error handling and reliability standards may be compromised, depending on the prototype's objectives.
+
+#### 2.3.2 Incremental Delivery
+
+#### Overview
+- Incremental delivery is an approach where parts of the system (increments) are developed and delivered to the customer for use.
+- Customers prioritize services, and increments are developed based on these priorities.
+
+#### Process Steps
+1. **Requirements Definition**: Detailed requirements for the first increment are defined.
+2. **Development**: The increment is developed while further requirements analysis for later increments may occur.
+3. **Delivery and Integration**: Once an increment is complete, it's delivered and integrated into the customer's working environment.
+
+#### Advantages
+1. **Prototyping Benefit**: Early increments act as prototypes, helping customers clarify later requirements.
+2. **Early Value**: Customers can immediately use and benefit from the software.
+3. **Flexibility**: Easier to incorporate changes into the system.
+4. **Focused Testing**: High-priority services are delivered and tested first, reducing the likelihood of failures in critical parts.
+
+#### Limitations
+1. **Replacement Difficulty**: Incremental delivery is problematic when replacing an existing system, as users want all functionalities upfront.
+2. **Common Facilities**: Difficult to identify common facilities needed by all increments when requirements are not fully defined.
+3. **Procurement Conflict**: Conflicts with traditional procurement models requiring a complete system specification upfront.
+
+#### Unsuitability for Certain Systems
+- Incremental delivery is not ideal for very large systems, embedded systems depending on hardware development, or critical systems requiring comprehensive requirements analysis.
+
+#### Alternative Approach for Large Systems
+- A system prototype may be developed for experimentation, and definitive requirements can be agreed upon based on the experience gained.
+
 ### 2.4 Process Improvement
+
