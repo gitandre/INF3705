@@ -161,6 +161,38 @@ In summary, architectural patterns offer a formalized way to introduce tried and
 
 #### 6.3.1 Layered Architecture
 
+1. **Fundamental Concepts**: 
+    - Separation and independence are key to architectural design.
+    - Allows for changes to be localized within the system.
+
+2. **Layered Architecture Purpose**: 
+    - Achieves separation and independence by organizing system functionality into separate layers.
+    - Each layer relies only on the layer immediately beneath it.
+
+3. **Advantages**:
+    - **Incremental Development**: Allows for the incremental release of services as layers are developed.
+    - **Changeability and Portability**: A new layer can replace an existing one without affecting the rest of the system, provided the interface remains the same.
+    - **Localizing Dependencies**: Makes it easier to adapt to different operating systems or databases, as only machine-dependent layers need to be changed.
+
+4. **Example Structure**: 
+    - Four-layer example consists of:
+        1. System support software layer (e.g., database and OS support).
+        2. Application layer with application functionality and utility components.
+        3. User interface management, authentication, and authorization layer.
+        4. Top layer focused on user interface facilities.
+    - The number of layers is arbitrary and can be adjusted as needed.
+
+5. **Real-world Examples**: 
+    - iLearn digital learning system and Mentcare system both employ a four-layer architecture following this pattern.
+
+In summary, the Layered Architecture pattern organizes a system into separate, interdependent layers to achieve modularity, ease of development, and change resilience. This architecture is flexible, allowing for incremental development and adaptability to different technological platforms.
+
+![img_52.png](img_52.png)
+
+![img_51.png](img_51.png)
+
+![img_50.png](img_50.png)
+
 #### 6.3.2 Repository Architecture
 
 #### 6.3.3 Client-Server Architecture
