@@ -361,9 +361,9 @@
 - No single model suits all large-scale agile products; customization is often required.
 - Agile methods need to evolve and integrate plan-based practices to tackle the complexities of large systems.
 
-![img_11.png](img_11.png)
+![img_11.png](../done/img_11.png)
 
-![img_12.png](img_12.png)
+![img_12.png](../done/img_12.png)
 
 #### 3.4.4 Agile methods across organizations
 
