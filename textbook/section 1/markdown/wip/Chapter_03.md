@@ -367,6 +367,24 @@
 
 #### 3.4.4 Agile methods across organizations
 
+#### Agile Methods in Small vs. Large Companies
+- Small software companies easily adopt agile methods due to lack of organizational bureaucracy.
+- Larger companies find it challenging to scale out agile methods across the organization.
+
+#### Challenges in Introducing Agile to Large Companies
+1. **Reluctance from Project Managers**: Lack of experience in agile makes them hesitant to take the risk.
+2. **Organizational Procedures**: Existing quality procedures and tools may conflict with agile principles.
+3. **Team Skill Levels**: Agile is most effective with high-skill team members, which may not always be the case in large organizations.
+4. **Cultural Resistance**: Organizations with a history of conventional systems engineering may resist agile methods.
+
+#### Incompatibility with Company Procedures
+- **Change Management**: Agile's flexibility in refactoring conflicts with the controlled nature of change management.
+- **Testing Procedures**: External testing teams may conflict with agile's test-first approaches.
+
+#### Implementing Agile in Large Organizations
+- Requires a cultural change, often necessitating a change in management.
+- Best introduced gradually, starting with an enthusiastic group of developers.
+- Successful agile projects can serve as a starting point for broader organizational adoption.
 
 ### Summary
 
@@ -381,3 +399,5 @@
 - To scale agile methods, some plan-based practices have to be integrated with agile practice.
 
 - These include up-front requirements, multiple customer representatives, more documentation, common tooling across project teams, and the alignment of releases across teams.
+
+---
