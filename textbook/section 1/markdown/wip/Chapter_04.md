@@ -411,12 +411,105 @@ In summary, the Software Requirements Document is a versatile tool that varies i
 
 ### 4.5 Requirements validation 
 
+#### Requirements Validation: Overview
+- A critical process aimed at ensuring the requirements define the system the customer truly wants.
+- Errors in the requirements document can lead to extensive rework and associated costs.
+
+#### Importance of Validation
+- Cost of fixing requirements errors is usually much higher than fixing design or coding errors.
+- Changes to requirements often necessitate changes in design, implementation, and retesting.
+
+#### Types of Checks
+1. **Validity Checks**: Ensure requirements reflect real needs of users, considering possible changes since initial elicitation.
+2. **Consistency Checks**: Ensure there are no conflicting or contradictory requirements in the document.
+3. **Completeness Checks**: Verify that all functions and constraints intended by the user are defined.
+4. **Realism Checks**: Validate that requirements can be implemented within budget and schedule constraints.
+5. **Verifiability**: Make sure requirements are written in a way that allows them to be verified through testing.
+
+#### Validation Techniques
+1. **Requirements Reviews**: Systematic analysis by a review team to check for errors and inconsistencies.
+2. **Prototyping**: Creation and use of an executable model to gather feedback from end-users and customers.
+3. **Test-case Generation**: Developing tests based on requirements to identify issues; integral to test-driven development.
+
+#### Challenges and Limitations
+- Difficult to guarantee that requirements fully meet users' needs.
+- Users may struggle to visualize the system and how it fits into their work.
+- Not all requirements problems are usually found during validation; further changes are often needed later.
+
+In summary, requirements validation is a complex but critical process that uses various checks and techniques to ensure that the system being developed aligns with what the customer actually wants. Despite its challenges, it is a vital step to minimize future rework and associated costs.
 
 
 ### 4.6 Requirements change
 
+#### Requirements Change: Overview
+- Requirements for large systems are subject to constant change, often due to the complexity of "wicked" problems that cannot be fully defined.
 
+#### Reasons for Change
+1. **Business and Technical Environment**: Post-installation changes in hardware, interfacing with other systems, business priorities, and new regulations may necessitate adjustments.
+2. **Diverse Stakeholders**: Requirements may be imposed by system customers for organizational and budgetary reasons, which may conflict with end-user needs. Post-delivery adjustments may be necessary.
+3. **Stakeholder Priorities**: Large systems usually have diverse stakeholders with potentially conflicting requirements. Experience may reveal the need to re-prioritize support for different stakeholders.
 
+#### Managing Requirements Change
+- Formal process needed for making change proposals and linking these to existing requirements, known as "requirements management."
+- Should start as soon as a draft version of the requirements document is available.
+
+#### Agile Development and Requirements Change
+- Agile processes are designed to cope with changing requirements.
+- Users prioritize changes, and high-priority changes can replace planned features for the next iteration.
+- However, this approach can be problematic as users may not be the best to decide cost-effectiveness.
+
+#### Independent Authority
+- An independent authority is often better suited to balance the needs of all stakeholders and decide on the changes to be accepted.
+
+In summary, requirements change is an inevitable aspect of software development, especially for complex systems. Various factors contribute to this, including changes in the business environment, conflicting stakeholder priorities, and the inherent nature of complex problems. Effective management of these changing requirements is crucial, and different approaches like Agile have their own pros and cons. An independent authority can often offer a balanced perspective on what changes should be accepted.
+
+#### 4.6.1 Requirements management planning
+
+#### Requirements Management Planning: Overview
+- The focus is on establishing how an evolving set of requirements will be managed.
+
+#### Planning Stage Decisions
+1. **Requirements Identification**: Each requirement needs a unique identifier for cross-referencing and traceability.
+2. **Change Management Process**: A set of activities to assess the impact and cost of changes.
+3. **Traceability Policies**: Define the relationships between each requirement and between the requirements and system design, along with how these records are maintained.
+4. **Tool Support**: Tools range from specialist requirements management systems to spreadsheets and simple databases.
+
+#### Tool Support Needs
+1. **Requirements Storage**: A secure, managed data store accessible to all stakeholders.
+2. **Change Management**: Tools can simplify the change management process by tracking suggested changes and responses.
+3. **Traceability Management**: Tools can help discover related requirements, some even using natural language processing techniques for this purpose.
+
+#### Scale of the System and Tooling
+- For small systems, simple tools like shared web documents, spreadsheets, and databases may suffice.
+- For larger systems, specialized tools like DOORS are more appropriate for managing a large number of changing requirements.
+
+In summary, requirements management planning involves key decisions on identifying requirements, managing changes, establishing traceability policies, and selecting appropriate tools. The scale of the system often dictates the complexity of the tools needed, with specialized software being more suited for larger, more complex projects.
+
+#### 4.6.1 Requirements change management
+
+#### Requirements Change Management: Overview
+- Change management is crucial after the requirements document has been approved to weigh the benefits and costs of implementing new requirements. 
+- A formal process ensures consistent treatment of all change proposals and controlled changes to the requirements document.
+
+#### Principal Stages of Change Management
+1. **Problem Analysis and Change Specification**: 
+    - Begins with an identified requirements problem or a specific change proposal.
+    - Validate the problem or change proposal and get feedback from the requestor for further clarification or withdrawal.
+  
+2. **Change Analysis and Costing**:
+    - Evaluate the impact of the proposed change using traceability information and general system knowledge.
+    - Estimate the cost of the change in terms of modifications to the requirements document and possibly to the system design and implementation.
+    - Decide whether or not to proceed with the requirements change.
+
+3. **Change Implementation**:
+    - Modify the requirements document and, if necessary, the system design and implementation.
+    - Aim for a changeable document structure to allow for easy modifications without extensive rewriting.
+
+#### Emergency Changes
+- In cases of urgent new requirements, the temptation to change the system first and update the document later should be resisted.
+- Failure to immediately update the requirements document can lead to inconsistencies between the document and the actual system.
+
+In summary, requirements change management is a structured process comprising problem analysis, change analysis and costing, and change implementation. It aims to control and document changes to the system requirements in an organized and consistent manner. Emergency changes are a special case where immediate action may be necessary, but these should be documented as soon as possible to maintain consistency.
 
 ### Summary
 
