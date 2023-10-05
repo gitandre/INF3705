@@ -7,6 +7,47 @@
 
 ---
 
+### Architectural Design
+
+1. **Definition and Role**: 
+    - Architectural design is about designing the overall structure of a software system.
+    - It links requirements engineering to design by identifying main structural components and their relationships.
+    - The output is an architectural model that shows how the system's components communicate.
+
+2. **In Agile Processes**: 
+    - Early stages focus on architectural design.
+    - Incremental development of architecture is not effective; refactoring architecture is expensive.
+
+3. **Overlap with Requirements Engineering**: 
+    - In practice, architectural design often overlaps with requirements engineering.
+    - Main components may be identified during the requirements phase to facilitate discussions with stakeholders.
+
+4. **Levels of Abstraction**: 
+    - Architecture in the Small: Focuses on individual programs and their decomposition.
+    - Architecture in the Large: Concerned with complex enterprise systems and their interconnections.
+
+5. **Importance and Impact**: 
+    - Affects performance, robustness, distributability, and maintainability.
+    - Non-functional requirements significantly influence the architecture.
+
+6. **Advantages of Explicit Architecture**: 
+    1. Facilitates stakeholder communication.
+    2. Aids in early-stage system analysis.
+    3. Supports large-scale reuse through product-line architectures.
+
+7. **Modeling Techniques**: 
+    - Block diagrams are commonly used but are criticized for their lack of detail.
+    - More rigorous architectural description languages exist but are not widely used due to their complexity and cost.
+
+8. **Contradictions in Practice**: 
+    - Architectural models serve two purposes:
+        1. Encouraging discussions about system design for stakeholder communication and project planning.
+        2. Documenting a fully fleshed-out architecture to facilitate system understanding and evolution.
+
+Architectural design is a critical phase in the software development process, serving as the bridge between requirements and implementation. While it plays a significant role in influencing various system attributes, the ways in which architectural models are created and used can vary, often depending on project-specific needs and constraints.
+
+![img_44.png](img_44.png)
+
 ### 6.1 Architecture Design Decisions
 
 
