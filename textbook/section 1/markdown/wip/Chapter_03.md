@@ -277,7 +277,59 @@
 
 #### 3.4.1 Practical problems with agile methods
 
+#### General Suitability
+- Agile methods are highly effective for software products and apps.
+- They may not be appropriate for embedded systems, large and complex systems, or ongoing software maintenance.
+
+#### Challenges for Large, External Projects
+1. **Contractual Issues**: The informality of agile development clashes with the legal contracts often used in large projects.
+2. **Maintenance Costs**: Agile is geared more toward new development, whereas most costs in large companies stem from maintenance.
+3. **Global Teams**: Agile is designed for small, co-located teams, but many modern projects involve globally distributed teams.
+
+#### Specific Issues
+- **Lack of Definitive Requirements**: Agile's evolving requirements don't fit well into traditional contracts that define specific deliverables.
+  
+#### Maintenance Issues
+1. **Lack of Documentation**: Agile methods often lack formal documentation, making it challenging to assess the impact of proposed system changes.
+2. **Customer Involvement**: It's difficult to keep customers engaged during the maintenance phase.
+3. **Team Continuity**: Agile methods rely on the team's collective memory and expertise, which can be lost if the team is disbanded or changed.
+
+#### Summary
+- While agile methods excel in specific scenarios, they have limitations and challenges when applied to large projects, maintenance, or distributed teams. These include contractual complexities, the focus on new development over maintenance, and issues related to documentation and team continuity.
+- 
 #### 3.4.2 Agile and plan-driven methods
+
+#### Introduction
+- Integration of agile and plan-driven methods is essential for scaling agile in larger companies.
+- Early agile enthusiasts resisted plan-driven approaches, but adaptations are necessary for various organizational and technical contexts.
+
+#### Deciding Between Agile and Plan-Driven
+- A balanced approach often combines elements of both plan-driven and agile methods.
+- Factors influencing the balance include system attributes, development team characteristics, and organizational context.
+
+#### System-Related Issues
+1. **System Size**: Agile is most effective for small, co-located teams. Larger systems may require a plan-driven approach.
+2. **System Type**: Systems requiring extensive pre-implementation analysis (e.g., real-time systems) may be better suited for a plan-driven approach.
+3. **System Lifetime**: Long-lasting systems may require more documentation for long-term maintenance.
+4. **External Regulation**: Systems subject to regulatory approval may require detailed documentation.
+
+#### Team-Related Issues
+1. **Skill Levels**: Agile may require higher skill levels. In less skilled teams, a separation of design and implementation roles may be needed.
+2. **Team Organization**: Distributed or outsourced teams may require more design documentation.
+3. **Technological Support**: The availability of adequate development tools can influence the need for documentation.
+
+#### Organizational Issues
+1. **Contractual Requirements**: A detailed specification may be necessary for contractual reasons, favoring a plan-driven approach for requirements engineering.
+2. **Incremental Delivery**: Feasibility depends on customer availability and willingness to participate.
+3. **Cultural Factors**: Traditional engineering organizations may be more comfortable with plan-driven methods due to their extensive design documentation.
+
+#### Conclusion
+- The label of "agile" or "plan-driven" is less important than choosing the methods that are most effective for the specific type of system being developed.
+
+![img_9.png](img_9.png)
+
+![img_10.png](img_10.png)
+
 
 #### 3.4.3 Agile methods for large systems
 
