@@ -284,8 +284,92 @@ Aggregation is a concept in system modeling used to represent part-whole relatio
 
 ### 5.4 Behavioral models
 
+1. **Definition**: 
+    - Models that describe the dynamic behavior of a system during its execution.
+    - Illustrate how a system responds to stimuli from its environment.
 
+2. **Types of Stimuli**: 
+    - Stimuli triggering system behavior can be either data or events.
+        1. **Data-driven Stimuli**: Availability of data triggers system processing.
+        2. **Event-driven Stimuli**: Specific events trigger system processing, may or may not have associated data.
 
+3. **Business Systems vs Real-Time Systems**:
+    - **Business Systems**: 
+        - Primarily data-driven.
+        - Controlled by data input and involve a sequence of actions on that data.
+        - Example: Phone billing system calculates costs based on call data and generates a bill.
+    - **Real-Time Systems**: 
+        - Primarily event-driven.
+        - Respond to real-time events with limited data processing.
+        - Example: Landline phone switching system responds to "handset activated" event by generating a dial tone.
+
+Behavioral models are crucial for understanding how a system interacts with its environment and responds to various stimuli, which can be either data-driven or event-driven. The nature of the system—whether it's a business system or a real-time system—determines its primary mode of operation.
+
+#### 5.4.1 Data-driven modelling
+
+1. **Purpose**: 
+    - Illustrates the sequence of actions for processing input data to generate an output.
+    - Useful for requirement analysis as it shows end-to-end processing in a system.
+
+2. **Historical Context**: 
+    - One of the first graphical software models.
+    - Originated in the 1970s with the use of data-flow diagrams (DFDs).
+
+3. **Data-Flow Diagrams (DFDs)**:
+    - Show how data associated with a process moves through the system.
+    - Simple and intuitive, making them accessible to stakeholders including non-technical ones.
+    - Can be represented in UML using activity diagrams.
+
+4. **UML Sequence Diagrams**:
+    - An alternative to DFDs for showing sequential data processing.
+    - Messages are sent from left to right to show sequence.
+    - Focuses on objects in the system.
+  
+5. **DFDs vs Sequence Diagrams**:
+    - DFDs focus on operations or activities.
+    - Sequence Diagrams focus on objects and their interactions.
+    - Nonexperts often find DFDs more intuitive, while engineers may prefer sequence diagrams.
+
+Data-driven models are instrumental in showing the sequence of actions that occur from the time an initial input is processed until an output is generated. These models can be presented in various forms such as Data-Flow Diagrams (DFDs) or UML Sequence Diagrams, each with its own set of advantages and limitations.
+
+![img_36.png](img_36.png)
+
+![img_37.png](img_37.png)
+
+#### 5.4.2 Event-driven modelling
+
+1. **Purpose**: 
+    - To show how a system responds to internal and external events.
+    - Particularly relevant for real-time systems.
+  
+2. **Concepts**: 
+    - Assumes the system has a finite number of states.
+    - Events (stimuli) trigger transitions between these states.
+  
+3. **UML State Diagrams**: 
+    - Used to represent event-based modeling.
+    - Show system states and transitions but not data flow.
+    - Rounded rectangles represent states and labeled arrows signify stimuli triggering transitions.
+  
+4. **Example**: 
+    - A simplified microwave oven model used to illustrate the approach.
+    - Sequence of actions defined such as selecting power level, setting cooking time, and starting the oven.
+    - Safety features like not operating when the door is open are included.
+  
+5. **Complexity Issue**: 
+    - Number of possible states can increase rapidly for large systems.
+    - One solution is to use "superstates" to encapsulate multiple states, simplifying the high-level view.
+  
+6. **Detailed Description**: 
+    - State models are often extended with tables listing states, events, and descriptions for more clarity.
+
+Event-driven modeling is a technique primarily used for real-time systems to show how a system responds to various events or stimuli. The UML supports this modeling approach through state diagrams, which depict the finite states of a system and the events that trigger transitions between these states. However, dealing with a large number of states can become complex, and thus, techniques like using "superstates" are employed to manage this complexity.
+
+![img_38.png](img_38.png)
+
+![img_39.png](img_39.png)
+
+![img_40.png](img_40.png)
 
 ### 5.5 Model-driven architecture
 
