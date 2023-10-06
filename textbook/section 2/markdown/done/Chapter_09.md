@@ -54,45 +54,6 @@
 
 ### 9.2 Legacy systems:
 
-#### Types of Evolution Processes
-- No standard evolution process; varies depending on software type, organizational processes, and team skills.
-- Evolution could be formal (e.g., embedded critical systems) or informal (e.g., mobile apps).
-
-#### Change Proposals
-- Driver for system evolution.
-- Originates from unimplemented requirements, new requirements, bug reports, or improvement ideas from the development team.
-- Cyclical process, continuing throughout system's lifetime.
-
-#### Change Management Steps
-1. **Change Analysis**: Assess which components need to be changed and the impact.
-2. **Release Planning**: Decide which proposed changes will be in the next release.
-3. **System Implementation**: Implement and validate changes.
-4. **System Release**: Release the new version to customers.
-
-#### Emergency Changes
-- Triggered by serious system faults, environment changes, or new legislation.
-- Often result in quick, workable solutions at the expense of long-term system structure.
-
-#### Documentation Concerns
-- Risk of code and documentation becoming inconsistent, particularly during emergency changes.
-- Minimal documentation is an agile approach to mitigate this issue.
-
-#### Agile Methods
-- Can be used both in development and evolution.
-- Seamless transition from development to evolution is possible.
-- May need modifications for maintenance and evolution tasks.
-
-#### Team Handover Challenges
-1. **Agile to Plan-based**: Lack of detailed documentation can be problematic.
-2. **Plan-based to Agile**: Lack of automated tests and non-refactored code can hinder agile processes.
-
-#### Agile Techniques
-- Test-driven development and automated regression testing are beneficial.
-- User stories and Scrum can help prioritize changes.
-
-#### Overall
-- The most appropriate evolution process is context-dependent, and agile methods can adapt to fit maintenance and evolution needs.
-
 #### 9.2.1 Legacy system management:
 
 #### Overview
