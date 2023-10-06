@@ -5,6 +5,11 @@
 ## 12.4 Safety cases
 
 ---
+
+#### **Note:** Images excluded due to time constraints
+
+---
+
 ### 12.1 Safety-critical systems:
 
 Safety-critical systems are systems in which it is essential that system operation is always safe. That is, the system should never damage people or the system’s environment, irrespective of whether or not the system conforms to its specification. Examples of safety-critical systems include control and monitoring systems in aircraft, process control systems in chemical and pharmaceutical plants, and automobile control systems.

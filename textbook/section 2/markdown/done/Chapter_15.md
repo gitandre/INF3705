@@ -6,6 +6,10 @@
 
 ---
 
+#### **Note:** Images excluded due to time constraints
+
+---
+
 ### 15.1 The reuse landscape:
 
 Over the past 20 years, many techniques have been developed to support software
