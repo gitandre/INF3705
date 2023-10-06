@@ -60,4 +60,4 @@ This repository is shared in the spirit of 'paying it forward.' While the resour
 
 ### Please explore the repo to see what is available
 
-![_110a5b19-e5c4-4c11-a433-3ec05ba272d1.jpeg](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2F_110a5b19-e5c4-4c11-a433-3ec05ba272d1.jpeg)
+![img_1.png](img_1.png)
