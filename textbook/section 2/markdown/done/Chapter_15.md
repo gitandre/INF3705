@@ -163,12 +163,73 @@
 - Further discussion on integration is mentioned to be covered in Section 15.4.2.
 
 
-#### 15.4.1 Configurable application systems 
+### 15.4.1 Configurable Application Systems
+
+#### Overview
+- **Configurable application systems** are generic software designed to support specific business types, activities, or even entire enterprises.
+- These systems include built-in assumptions about how users work, which can sometimes lead to issues.
+- **Enterprise Resource Planning (ERP) systems** are a specific example, designed to integrate various business functions like inventory management, manufacturing, and customer relationship management.
+
+#### Types of Configurable Systems
+1. **Domain-Specific Systems**: Target a particular business function, like document management.
+2. **ERP Systems**: Large-scale systems that can support multiple business functions.
+
+#### Key Features of ERP Systems
+1. **Modules**: ERP systems have modules to support different business functions such as purchasing, supply chain management, logistics, and customer relationship management (CRM).
+2. **Business Process Models**: Each module has associated business process models to define roles and activities.
+3. **Common Database**: A single database maintains information for all business functions, eliminating data replication.
+4. **Business Rules**: A set of rules that apply to all data to maintain consistency across business functions.
+
+#### Configuration Process
+1. **Select Modules**: Choose the necessary modules based on business needs.
+2. **Data Model**: Define how the organization’s data will be structured in the system database.
+3. **Business Rules**: Establish rules that apply to data.
+4. **External Interactions**: Define how the system will interact with external systems.
+5. **Input/Output Design**: Design the input forms and output reports.
+6. **New Business Processes**: Adapt or design business processes to fit the system's underlying model.
+7. **Deployment Settings**: Set parameters for system deployment.
+
+#### Limitations and Challenges
+- **Functionality**: Limited to the built-in modules of the ERP system.
+- **Business Model Mismatch**: The configuration language may not align with the customer’s business model, causing potential issues.
+- **Complex Configuration**: Requires detailed knowledge and often the help of consultants.
+
+#### Testing Challenges
+1. **Test Automation**: May be difficult or impossible due to lack of access to an API.
+2. **Subtle Errors**: Errors often arise from misunderstandings between those configuring the system and the end-users, and are specific to business processes.
 
 
-#### 15.4.2 Integrated application systems 
+### 15.4.2 Integrated Application Systems
 
-Integrated application systems include two or more application systems or, sometimes, legacy systems. You may use this approach when no single application system meets all of your needs or when you wish to integrate a new application system with systems that you are already using. The component systems may interact through their APIs or service interfaces if these are defined. Alternatively, they may be composed by connecting the output of one system to the input of another or by updating the databases used by the applications. To develop integrated application systems, you have to make a number of design choices: 1. Which individual application systems offer the most appropriate functionality? Typically, several system products will be available, which can be combined in different ways. If you don’t already have experience with a particular application system, it can be difficult to decide which product is the most suitable. 2. How will data be exchanged? Different systems normally use unique data structures and formats. You have to write adaptors that convert from one representation to another. These adaptors are runtime systems that operate alongside the constituent application systems. 3. What features of a product will actually be used? Individual application systems may include more functionality than you need, and functionality may be duplicated across different products. You have to decide which features in what product are most appropriate for your requirements. If possible, you should also deny access to unused functionality because this can interfere with normal system operation. 458    Chapter 15  ■  Software reuse Client Web browser Email system Server E-commerce Ordering and Adaptor system invoicing system Figure 15.14 An Email system Adaptor integrated procurement system Consider the following scenario as an illustration of application system integration. A large organization intends to develop a procurement system that allows staff to place orders from their desk. By introducing this system across the organization, the company estimates that it can save $5 million per year. By centralizing buying, the new procurement system can ensure that orders are always made from suppliers who offer the best prices and should reduce the administration associated with orders. As with manual systems, the system involves choosing the goods available from a supplier, creating an order, having the order approved, sending the order to a supplier, receiving the goods, and confirming that payment should be made. The company has a legacy ordering system that is used by a central procurement office. This order processing software is integrated with an existing invoicing and delivery system. To create the new ordering system, the legacy system is integrated with a web-based e-commerce platform and an email system that handles communications with users. The structure of the final procurement system is shown in Figure 15.14. This procurement system should be a client–server system with standard web browsing and email systems used on the client. On the server, the e-commerce platform has to integrate with the existing ordering system through an adaptor. The e-commerce system has its own format for orders, confirmations of delivery, and so forth, and these have to be converted into the format used by the ordering system. The e-commerce system uses the email system to send notifications to users, but the ordering system was never designed for this purpose. Therefore, another adaptor has to be written to convert the notifications from the ordering system into email messages. Months, sometimes years, of implementation effort can be saved, and the time to develop and deploy a system can be drastically reduced by integrating existing application systems. The procurement system described above was implemented and deployed in a very large company in nine months. It had originally been estimated that it would take three years to develop a procurement system in Java that could be integrated with the legacy ordering system. 15.4  ■  Application system reuse    459 Service wrapper Application system Figure 15.15 Application wrapping Services Services Application system integration can be simplified if a service-oriented approach is used. Essentially, a service-oriented approach means allowing access to the application system’s functionality through a standard service interface, with a service for each discrete unit of functionality. Some applications may offer a service interface, but sometimes this service interface has to be implemented by the system integrator. Essentially, you have to program a wrapper that hides the application and provides externally visible services (Figure 15.15). This approach is particularly valuable for legacy systems that have to be integrated with newer application systems. In principle, integrating application systems is the same as integrating any other component. You have to understand the system interfaces and use them exclusively to communicate with the software; you have to trade off specific requirements against rapid development and reuse; and you have to design a system architecture that allows the application systems to operate together. However, the fact that these products are usually large systems in their own right, and are often sold as separate standalone systems, introduces additional problems. Boehm and Abts (Boehm and Abts 1999) highlight four important system integration problems: 1. Lack of control over functionality and performance Although the published interface of a product may appear to offer the required facilities, the system may not be properly implemented or may perform poorly. The product may have hidden operations that interfere with its use in a specific situation. Fixing these problems may be a priority for the system integrator but may not be of real concern for the product vendor. Users may simply have to find workarounds to problems if they wish to reuse the application system. 2. Problems with system interoperability It is sometimes difficult to get individual application systems to work together because each system embeds its own assumptions about how it will be used. Garlan et al. (Garlan, Allen, and Ockerbloom 1995), reporting on their experience integrating four application systems, found that three of these products were event-based but that each used a different model of events. Each system assumed that it had exclusive access to the event queue. As a consequence, integration was very difficult. The project 460    Chapter 15  ■  Software reuse required five times as much effort as originally predicted. The schedule was extended to two years rather than the predicted six months. In a retrospective analysis of their work 10 years later, Garlan et al. (Garlan, Allen, and Ockerbloom 2009) concluded that the integration problems that they discovered had not been solved. Torchiano and Morisio (Torchiano and Morisio 2004) found that lack of compliance with standards in many application systems meant that integration was more difficult than anticipated. 3. No control over system evolution Vendors of application systems make their own decisions on system changes, in response to market pressures. For PC products in particular, new versions are often produced frequently and may not be compatible with all previous versions. New versions may have additional unwanted functionality, and previous versions may become unavailable and unsupported. 4. Support from system vendors The level of support available from system vendors varies widely. Vendor support is particularly important when problems arise as developers do not have access to the source code and detailed documentation of the system. While vendors may commit to providing support, changing market and economic circumstances may make it difficult for them to deliver this commitment. For example, a system vendor may decide to discontinue a product because of limited demand, or they may be taken over by another company that does not wish to support the products that have been acquired. Boehm and Abts reckon that, in many cases, the cost of system maintenance and evolution may be greater for integrated application systems. The above difficulties are life-cycle problems; they don’t just affect the initial development of the system. The further removed the people involved in the system maintenance become from the original system developers, the more likely it is that difficulties will arise with the integrated system. K e y P o i n t s ■ There are many different ways to reuse software. These range from the reuse of classes and methods in libraries to the reuse of complete application systems. ■ The advantages of software reuse are lower costs, faster software development, and lower risks. System dependability is increased. Specialists can be used more effectively by concentrating their expertise on the design of reusable components. ■ Application frameworks are collections of concrete and abstract objects that are designed for reuse through specialization and the addition of new objects. They usually incorporate good design practice through design patterns. Chapter 15  ■  Website    461 ■ Software product lines are related applications that are developed from one or more base applications. A generic system is adapted and specialized to meet specific requirements for functionality, target platform, or operational configuration. ■ Application system reuse is concerned with the reuse of largescale, off-the-shelf systems. These provide a lot of functionality, and their reuse can radically reduce costs and development time. Systems may be developed by configuring a single, generic application system or by integrating two or more application systems. ■ Potential problems with application system reuse include lack of control over functionality, performance, and system evolution; the need for support from external vendors; and difficulties in ensuring that systems can interoperate.
+#### Overview
+- **Integrated application systems** combine two or more application systems or legacy systems to meet specific needs.
+- These systems may interact via APIs, service interfaces, or through data exchange mechanisms.
+
+#### Design Choices for Integration
+1. **Selecting Appropriate Systems**: Choose the most suitable application systems that offer the required functionality.
+2. **Data Exchange**: Handle different data structures and formats by writing adaptors for conversion.
+3. **Feature Utilization**: Decide which features of each application system are needed and disable unused functionalities to avoid interference.
+
+#### Case Study: Procurement System
+- Illustrates how a large organization saved time and costs by integrating a legacy ordering system with a web-based e-commerce platform and an email system.
+- Utilized adaptors to handle data format conversions and notifications.
+
+#### Service-Oriented Approach
+- **Service Wrappers**: Use a standard service interface for each unit of functionality. These wrappers can particularly benefit legacy systems during integration.
+  
+#### Challenges and Problems in System Integration
+1. **Lack of Control over Functionality and Performance**: System may not be implemented properly or may have hidden operations.
+2. **System Interoperability Issues**: Systems may have their own assumptions making integration difficult.
+3. **No Control over System Evolution**: Vendors frequently update their systems, which might not be compatible with previous versions.
+4. **Vendor Support Variability**: Level of support can differ among vendors and may change over time due to various factors like market pressures.
+
+#### Life-Cycle Problems
+- Challenges in integration do not only affect initial development but can extend into the maintenance phase, especially when original developers are no longer involved.
+
+#### Key Points
+- Software reuse through application system integration can significantly reduce costs and development time.
+- However, it comes with challenges like lack of control over functionality, system interoperability issues, and variable vendor support.
+
 
 ---
 
