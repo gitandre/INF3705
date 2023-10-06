@@ -1,5 +1,7 @@
 # INF3705
 
+![img.png](img.png)
+
 ### Disclaimer
 
 These resources are meant for learning purposes and comes with no guarantee of accuracy or correctness. Please do your own research and use it as a tool to double-check your own work, attempts and understanding.
@@ -57,3 +59,5 @@ This repository is shared in the spirit of 'paying it forward.' While the resour
 
 
 ### Please explore the repo to see what is available
+
+![_110a5b19-e5c4-4c11-a433-3ec05ba272d1.jpeg](..%2F..%2F..%2F..%2F..%2F..%2FDownloads%2F_110a5b19-e5c4-4c11-a433-3ec05ba272d1.jpeg)
