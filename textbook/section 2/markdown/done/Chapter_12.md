@@ -9,6 +9,24 @@
 #### **Note:** Images excluded due to time constraints
 
 ---
+### Tree view: 
+
+- 12.1 Safety-critical systems
+- 12.2 Safety requirements
+  - 12.2.1 Hazard Identification
+  - 12.2.2 Hazard Assessment
+  - 12.2.3 Hazard Analysis
+  - 12.2.4 Risk Reduction
+- 12.3 Safety engineering processes
+  - 12.3.1 Safety Assurance Processes
+  - 12.3.2 Formal Verification
+  - 12.3.3 Model Checking
+  - 12.3.4 Static Program Analysis
+- 12.4 Safety cases
+  - 12.4.1 Structured Arguments
+  - 12.4.2 Software Safety Arguments
+    
+---
 
 ### 12.1 Safety-Critical Systems
 
